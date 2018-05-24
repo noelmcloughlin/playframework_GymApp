@@ -19,8 +19,8 @@
         </div>
 
         <div class="ui attached message">
-          <div class="ui fluid header">Welcome to our site!</div>
-          <p>Fill out the form below to sign-up for a new account</p>
+            <div class="ui fluid header">Welcome to our site!</div>
+            <p>Fill out the form below to sign-up for a new account</p>
         </div>
 
         <form class="ui fluid stacked segment form" action="/register" method="POST">
@@ -28,32 +28,32 @@
 
             <div class="two fields">
                 <div class="field">
-                  <label>First Name</label>
-                  <input placeholder="First Name" type="text" name="firstname">
+                    <label>First Name</label>
+                    <input placeholder="First Name" type="text" name="firstname">
                 </div>
                 <div class="field">
-                  <label>Last Name</label>
-                  <input placeholder="Last Name" type="text" name="lastname">
+                    <label>Last Name</label>
+                    <input placeholder="Last Name" type="text" name="lastname">
                 </div>
             </div>
             <div class="two fields">
                 <div class="field">
-                  <label>Username</label>
-                  <input placeholder="Username" type="text" name="username">
+                    <label>Username</label>
+                    <input placeholder="Username" type="text" name="username">
                 </div>
                 <div class="field">
-                  <label>Password</label>
-                  <input type="password" name="password">
+                    <label>Password</label>
+                    <input type="password" name="password">
                 </div>
             </div>
             <div class="field">
-            <label>Email</label>
-            <input placeholder="Email" type="text" name="email">
+                <label>Email</label>
+                <input placeholder="Email" type="text" name="email">
             </div>
             <div class="inline field">
                 <div class="ui checkbox">
-                  <input type="checkbox" id="terms">
-                  <label for="terms">I agree to the terms and conditions</label>
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I agree to the terms and conditions</label>
                 </div>
             </div>
             <br><br>
@@ -71,8 +71,8 @@
                             identifier: 'firstname',
                             rules: [
                                 {
-                                    type   : 'empty',
-                                    prompt : 'Please enter your firstname'
+                                    type: 'empty',
+                                    prompt: 'Please enter your firstname'
                                 }
                             ]
                         },
@@ -80,8 +80,8 @@
                             identifier: 'lastname',
                             rules: [
                                 {
-                                    type   : 'empty',
-                                    prompt : 'Please enter your lastname'
+                                    type: 'empty',
+                                    prompt: 'Please enter your lastname'
                                 }
                             ]
                         },
@@ -89,8 +89,8 @@
                             identifier: 'username',
                             rules: [
                                 {
-                                    type   : 'empty',
-                                    prompt : 'Please enter a username'
+                                    type: 'empty',
+                                    prompt: 'Please enter a username'
                                 }
                             ]
                         },
@@ -98,12 +98,12 @@
                             identifier: 'password',
                             rules: [
                                 {
-                                    type   : 'empty',
-                                    prompt : 'Please enter a password'
+                                    type: 'empty',
+                                    prompt: 'Please enter a password'
                                 },
                                 {
-                                    type   : 'minLength[6]',
-                                    prompt : 'Your password must be at least {ruleValue} characters'
+                                    type: 'minLength[6]',
+                                    prompt: 'Your password must be at least {ruleValue} characters'
                                 }
                             ]
                         },
@@ -111,8 +111,8 @@
                             identifier: 'terms',
                             rules: [
                                 {
-                                    type   : 'checked',
-                                    prompt : 'You must agree to the terms and conditions'
+                                    type: 'checked',
+                                    prompt: 'You must agree to the terms and conditions'
                                 }
                             ]
                         }

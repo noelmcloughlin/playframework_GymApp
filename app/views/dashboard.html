@@ -5,7 +5,7 @@
 
 <section class="ui raised segment">
     <header class="ui header">
-      ${person.firstname} ${person.lastname}'s Assessments
+        ${person.firstname} ${person.lastname}'s Assessments
     </header>
     <table class="ui celled table">
         <thead>
@@ -25,16 +25,18 @@
         <tbody>
         #{list items:assessmentlist, as:'assessment'}
         <tr>
-            <td> <div class="ui ribbon label">${assessment.date}</div> </td>
-            <td> ${assessment.updated} </td>
-            <td> ${assessment.weight} </td>
-            <td> ${assessment.chest} </td>
-            <td> ${assessment.thigh} </td>
-            <td> ${assessment.arm} </td>
-            <td> ${assessment.waist} </td>
-            <td> ${assessment.hips} </td>
-            <td> ${assessment.comment} </td>
-            <td> <a href="/dashboard/deleteAssessment/${assessment.id} " class="ui tiny red button"> Delete </a> </td>
+            <td>
+                <div class="ui ribbon label">${assessment.date}</div>
+            </td>
+            <td> ${assessment.updated}</td>
+            <td> ${assessment.weight}</td>
+            <td> ${assessment.chest}</td>
+            <td> ${assessment.thigh}</td>
+            <td> ${assessment.arm}</td>
+            <td> ${assessment.waist}</td>
+            <td> ${assessment.hips}</td>
+            <td> ${assessment.comment}</td>
+            <td><a href="/dashboard/deleteAssessment/${assessment.id} " class="ui tiny red button"> Delete </a></td>
         </tr>
         #{/list}
         </div>

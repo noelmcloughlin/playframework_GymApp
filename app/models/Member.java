@@ -1,8 +1,8 @@
 package models;
 
 /**
-* Member class implements membership stuff. Extends Domain model class.
-**/
+ * Member class implements membership stuff. Extends Domain model class.
+ **/
 
 import java.util.HashMap;
 import java.util.SortedSet;
@@ -10,8 +10,7 @@ import java.util.TreeSet;
 import javax.persistence.*;
 
 @Entity
-public class Member extends GymModel
-{
+public class Member extends GymModel {
     public Long person_id;
     public String gender;
 
@@ -51,13 +50,11 @@ public class Member extends GymModel
      * @param person_id Person id (primary key in PErson DB)
      * @return Member Instance
      */
-    public static Member findByPersonId(Long person_id)
-    {
+    public static Member findByPersonId(Long person_id) {
         return find("person_id", person_id).first();
     }
 
-    public static Member findById(Long person_id)
-    {
+    public static Member findById(Long person_id) {
         return find("username", person_id).first();
     }
 
@@ -69,8 +66,7 @@ public class Member extends GymModel
      *
      * @return Assessment The most recent assessment
      */
-    public Assessment latestAssessment()
-    {
+    public Assessment latestAssessment() {
         SortedSet<String> dates = new TreeSet<>(getAssessments().keySet());
         if (getAssessments().isEmpty())
             return null;
@@ -83,8 +79,7 @@ public class Member extends GymModel
      *
      * @return SortedSet Sorted assessment dates.
      */
-    public SortedSet sortedAssessmentDates()
-    {
+    public SortedSet sortedAssessmentDates() {
         // return keys sorted in ascending order
         return new TreeSet<>(getAssessments().keySet());
     }
@@ -99,8 +94,7 @@ public class Member extends GymModel
      * @param height members height
      * @param chosenPackage chosen gym package
      */
-    public Member(Long person_id, float startWeight, float height, String chosenPackage)
-    {
+    public Member(Long person_id, float startWeight, float height, String chosenPackage) {
         this.person_id = person_id;
         this.startWeight = startWeight;
         this.height = height;
@@ -158,8 +152,7 @@ public class Member extends GymModel
      *
      * @param startWeight float
      */
-    public void setStartWeight(float startWeight)
-    {
+    public void setStartWeight(float startWeight) {
         if (startWeight < Constants.MIN_WEIGHT)
             this.startWeight = Constants.MIN_WEIGHT;
         else if (startWeight > Constants.MAX_WEIGHT)
@@ -208,8 +201,6 @@ public class Member extends GymModel
     public void setChosenPackage(String chosenPackage) {
         this.chosenPackage = chosenPackage;
     }
-
-
 
 
     //--------- Helpers --------//

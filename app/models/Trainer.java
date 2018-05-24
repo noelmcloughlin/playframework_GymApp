@@ -1,8 +1,8 @@
 package models;
 
 /**
-* Trainer class implements trainership stuff. Extends Domain model class.
-**/
+ * Trainer class implements trainership stuff. Extends Domain model class.
+ **/
 
 import java.util.HashMap;
 import java.util.Set;
@@ -11,8 +11,7 @@ import java.util.TreeSet;
 import javax.persistence.*;
 
 @Entity
-public class Trainer extends GymModel
-{
+public class Trainer extends GymModel {
     public Long person_id;
     public String speciality;
     private static final Role ROLE = Role.Trainer;
@@ -44,8 +43,7 @@ public class Trainer extends GymModel
      * @param person_id person id (entity in person database)
      * @param speciality trainers staring weight
      */
-    public Trainer(Long person_id, String speciality)
-    {
+    public Trainer(Long person_id, String speciality) {
         this.person_id = person_id;
         this.speciality = speciality;
     }
@@ -56,8 +54,7 @@ public class Trainer extends GymModel
      * Get the trainers speciality
      * @return String myspeciality
      */
-    public String getSpeciality()
-    {
+    public String getSpeciality() {
         return speciality;
     }
 
@@ -65,8 +62,7 @@ public class Trainer extends GymModel
      * Set the Trainers speciality
      * @param speciality String
      */
-    public void setSpeciality(String speciality)
-    {
+    public void setSpeciality(String speciality) {
         this.speciality = speciality;
     }
 

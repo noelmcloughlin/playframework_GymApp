@@ -14,8 +14,7 @@ import java.util.List;
  * Assessment class implementation (JPA entity too).
  */
 @Entity
-public class Assessment extends GymModel
-{
+public class Assessment extends GymModel {
     // Creation Date
     public Long person_id;
     public String date;      //date created
@@ -31,8 +30,7 @@ public class Assessment extends GymModel
     //----- helpers -----
 
     @Override
-    public java.lang.String toString()
-    {
+    public java.lang.String toString() {
         return "Assessment{" +
                 "person_id=" + person_id +
                 ", date='" + date + '\'' +
@@ -47,8 +45,7 @@ public class Assessment extends GymModel
                 '}' + super.toString();
     }
 
-    public static List<Assessment> findallByPersonId(Long person_id)
-    {
+    public static List<Assessment> findallByPersonId(Long person_id) {
         return find("person_id", person_id).fetch();
     }
 
@@ -58,22 +55,21 @@ public class Assessment extends GymModel
      * Default constructor only exists for the sake of JPA (apparently ;-)
      * You won’t use it directly so its protected
      */
-    protected Assessment()
-    {}
+    protected Assessment() {
+    }
 
     /**
      * Constructs Assessment instance from supplied arguments.
      *
-     * @param weight Assessed weight in kgs.
-     * @param chest Assessed chest in inches
-     * @param thigh Assessed thigh in inches
-     * @param arm Assessed arm in inches.
-     * @param waist Assessed waist in inches.
-     * @param hips Assessed hips in inches.
+     * @param weight  Assessed weight in kgs.
+     * @param chest   Assessed chest in inches
+     * @param thigh   Assessed thigh in inches
+     * @param arm     Assessed arm in inches.
+     * @param waist   Assessed waist in inches.
+     * @param hips    Assessed hips in inches.
      * @param comment Assessment commentary.
      */
-    public Assessment(Long person_id, float weight, float chest, float thigh, float arm, float waist, float hips, String comment)
-    {
+    public Assessment(Long person_id, float weight, float chest, float thigh, float arm, float waist, float hips, String comment) {
         // Date as String
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormat.format(new Date());
@@ -103,6 +99,7 @@ public class Assessment extends GymModel
 
     /**
      * Set the assessment date
+     *
      * @param date String
      */
     public void setDate(String date) {
@@ -111,6 +108,7 @@ public class Assessment extends GymModel
 
     /**
      * Get date of last Assessment update
+     *
      * @return String updated
      */
     public String getUpdated() {
@@ -119,6 +117,7 @@ public class Assessment extends GymModel
 
     /**
      * Set date Assessment was updated last
+     *
      * @param updated String
      */
     public void setUpdated(String updated) {
@@ -127,6 +126,7 @@ public class Assessment extends GymModel
 
     /**
      * Get assessed weight
+     *
      * @return float weight
      */
     public float getWeight() {
@@ -135,6 +135,7 @@ public class Assessment extends GymModel
 
     /**
      * Set assessed weight
+     *
      * @param weight float
      */
     public void setWeight(float weight) {
@@ -143,6 +144,7 @@ public class Assessment extends GymModel
 
     /**
      * get assessed chest measurement
+     *
      * @return float chest
      */
     public float getChest() {
@@ -151,6 +153,7 @@ public class Assessment extends GymModel
 
     /**
      * Set assessed chest measurement
+     *
      * @param chest float
      */
     public void setChest(float chest) {
@@ -159,6 +162,7 @@ public class Assessment extends GymModel
 
     /**
      * Get assessed thigh measurement
+     *
      * @return float thigh
      */
     public float getThigh() {
@@ -185,6 +189,7 @@ public class Assessment extends GymModel
 
     /**
      * Set upper arm measurement
+     *
      * @param arm float
      */
     public void setArm(float arm) {
@@ -202,6 +207,7 @@ public class Assessment extends GymModel
 
     /**
      * Set waist measurement
+     *
      * @param waist float
      */
     public void setWaist(float waist) {
@@ -210,6 +216,7 @@ public class Assessment extends GymModel
 
     /**
      * Get Hip measurement
+     *
      * @return hips float
      */
     public float getHips() {
@@ -227,6 +234,7 @@ public class Assessment extends GymModel
 
     /**
      * Get assessment comment
+     *
      * @return String comment
      */
     public String getComment() {

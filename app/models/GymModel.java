@@ -2,24 +2,26 @@ package models;
 
 /**
  * Gym Domain class implements common 'Play domain' stuff. Extends Generic model class.
- *
  **/
 
 import javax.persistence.*;
+
 import play.db.jpa.GenericModel;
 
 @MappedSuperclass
 public abstract class GymModel extends GenericModel {
 
     @Id
-    @Column(name="id")
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
     /**
      * Enumerate the Gym roles for derived classes
      */
-    public enum Role { Guest, Member, Trainer; }
+    public enum Role {
+        Guest, Member, Trainer;
+    }
 
     //--- helpers --
 
@@ -28,8 +30,7 @@ public abstract class GymModel extends GenericModel {
      * @param id primary key
      * @return GymModel record
      */
-    protected static GymModel findById(Long id)
-    {
+    protected static GymModel findById(Long id) {
         return find("id", id).first();
     }
 
@@ -44,6 +45,7 @@ public abstract class GymModel extends GenericModel {
     }
 
     //---- constructors ----
+
     /**
      * Default constructor of instance
      */

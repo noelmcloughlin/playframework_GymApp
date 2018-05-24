@@ -2,26 +2,26 @@
 #{set title:'Admin' /}
 
 <section class="ui raised segment">
-  <header class="ui header">
-    Assessment List
-  </header>
-  <table class="ui fixed table">
-    <thead>
-    <tr>
-      <th>Id</th>
-      <th>Assessment</th>
-    </tr>
-    </thead>
-    <tbody>
-    <div class="ui bulleted list">
-      #{list items:assessmentlist, as:'assessment'}
+    <header class="ui header">
+        Assessment List
+    </header>
+    <table class="ui fixed table">
+        <thead>
         <tr>
-          <td> ${assessment.id} </td>
-          <td> ${assessment.title} </td>
+            <th>Id</th>
+            <th>Assessment</th>
         </tr>
-      #{/list}
-    </div>
-    </tbody>
-  </table>
+        </thead>
+        <tbody>
+        <div class="ui bulleted list">
+            #{list items:assessmentlist, as:'assessment'}
+            <tr>
+                <td> ${assessment.id}</td>
+                <td> ${assessment.title}</td>
+            </tr>
+            #{/list}
+        </div>
+        </tbody>
+    </table>
 
 </section>

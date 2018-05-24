@@ -7,10 +7,8 @@ import play.test.*;
 import models.*;
 
 @OnApplicationStart
-public class Bootstrap extends Job
-{
-  public void doJob()
-  {
-    Fixtures.loadModels("data.yml");
-  }
+public class Bootstrap extends Job {
+    public void doJob() {
+        Fixtures.loadModels("data.yml");
+    }
 }

@@ -5,14 +5,15 @@ package models;
  **/
 
 // downloaded from maven in IntelliJ
+
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.*;
+
 import play.cache.Cache;
 
 @Entity
-public class Person extends GymModel
-{
+public class Person extends GymModel {
     // Personal attributes
     public String firstname;
     public String lastname;
@@ -33,14 +34,13 @@ public class Person extends GymModel
         return ROLE;
     }
 
-    public boolean checkPassword(String password)
-    {
+    public boolean checkPassword(String password) {
         return BCrypt.checkpw(password, this.passwordHash);
     }
 
     /**
-     *  Return a string representation of the Member data structure.
-     *  Include values of inherited attributes.
+     * Return a string representation of the Member data structure.
+     * Include values of inherited attributes.
      *
      * @return String string representation of object.
      */
@@ -62,18 +62,19 @@ public class Person extends GymModel
 
     /**
      * Find person by username
+     *
      * @param username digital username
      * @return Person
      */
-    public static Person findByUsername(String username)
-    {
+    public static Person findByUsername(String username) {
         return find("username", username).first();
     }
 
     //-------- Constructor --------//
 
 
-    /** Minimal Constructor for Person (i.e. new user registration)
+    /**
+     * Minimal Constructor for Person (i.e. new user registration)
      *
      * @param firstname
      * @param lastname
@@ -81,8 +82,7 @@ public class Person extends GymModel
      * @param password
      * @param email
      */
-    public Person(String firstname, String lastname, String username, String password, String email)
-    {
+    public Person(String firstname, String lastname, String username, String password, String email) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
@@ -90,19 +90,19 @@ public class Person extends GymModel
         this.email = email;
     }
 
-    /** Default Constructor, returning a complete Person instance.
+    /**
+     * Default Constructor, returning a complete Person instance.
      *
      * @param firstname persons first name
-     * @param lastname persons surname
-     * @param dob Date of Birth
-     * @param address personal address
-     * @param gender personal gender
-     * @param username persons system username
-     * @param password persons system passwordHash
-     * @param email email address
+     * @param lastname  persons surname
+     * @param dob       Date of Birth
+     * @param address   personal address
+     * @param gender    personal gender
+     * @param username  persons system username
+     * @param password  persons system passwordHash
+     * @param email     email address
      **/
-    public Person(String firstname, String lastname, String dob, String address, String gender, String username, String password, String email)
-    {
+    public Person(String firstname, String lastname, String dob, String address, String gender, String username, String password, String email) {
         this(firstname, lastname, username, password, email);
         this.dob = dob;
         this.address = address;
@@ -125,12 +125,11 @@ public class Person extends GymModel
      *
      * @param firstname String
      */
-    public void setFirstname(String firstname)
-    {
-         if (firstname.trim().length() == 0)
+    public void setFirstname(String firstname) {
+        if (firstname.trim().length() == 0)
             this.firstname = "unspecified";
         else
-            this.firstname =  firstname.trim();
+            this.firstname = firstname.trim();
     }
 
     /**
@@ -147,15 +146,14 @@ public class Person extends GymModel
      *
      * @param lastname String
      */
-    public void setLastname(String lastname)
-    {
+    public void setLastname(String lastname) {
         lastname.trim();
-        if (lastname.length() > Constants.MAX_SNAME_LENGTH )
-            this.lastname = lastname.substring(0,Constants.MAX_SNAME_LENGTH);
+        if (lastname.length() > Constants.MAX_SNAME_LENGTH)
+            this.lastname = lastname.substring(0, Constants.MAX_SNAME_LENGTH);
         else if (lastname.length() == 0)
             this.lastname = "unspecified";
         else
-            this.lastname =  lastname;
+            this.lastname = lastname;
     }
 
 
@@ -173,12 +171,11 @@ public class Person extends GymModel
      *
      * @param dob String
      */
-    public void setDob(String dob)
-    {
+    public void setDob(String dob) {
         if (dob.trim().length() == 0)
             this.dob = "unspecified";
         else
-            this.dob =  dob.trim();
+            this.dob = dob.trim();
     }
 
     /**
@@ -195,8 +192,7 @@ public class Person extends GymModel
      *
      * @param address address
      */
-    public void setAddress(String address)
-    {
+    public void setAddress(String address) {
         if (address.length() == 0)
             this.address = "Unspecified";
         else
@@ -218,13 +214,11 @@ public class Person extends GymModel
      *
      * @param gender gender
      */
-    public void setGender(String gender)
-    {
+    public void setGender(String gender) {
         if (gender.trim().length() == 0)
             this.gender = "unspecified";
         else
-            switch (gender.toUpperCase().trim().charAt(0))
-            {
+            switch (gender.toUpperCase().trim().charAt(0)) {
                 case 'M':
                     this.gender = gender;
                     break;
@@ -248,15 +242,14 @@ public class Person extends GymModel
      *
      * @param username String
      */
-    public void setUsername(String username)
-    {
+    public void setUsername(String username) {
         username.trim();
-        if (username.length() > Constants.MAX_UNAME_LENGTH )
-            this.username = username.substring(0,Constants.MAX_UNAME_LENGTH);
+        if (username.length() > Constants.MAX_UNAME_LENGTH)
+            this.username = username.substring(0, Constants.MAX_UNAME_LENGTH);
         else if (username.length() == 0)
             this.username = "fixme";
         else
-            this.username =  username;
+            this.username = username;
     }
 
     /**
@@ -270,13 +263,12 @@ public class Person extends GymModel
 
     /**
      * Set persons's passwordHash. Hash using 'BCrypt->hashpw' method if necessary.
-     *
+     * <p>
      * Idea from MRIdb play application.
      *
      * @param passwordHash String
      */
-    public void setPasswordHash(String passwordHash)
-    {
+    public void setPasswordHash(String passwordHash) {
         if (passwordHash.trim().length() == 0)
             this.passwordHash = "password";
 
@@ -301,8 +293,7 @@ public class Person extends GymModel
      *
      * @param email email
      */
-    public void setEmail(String email)
-    {
+    public void setEmail(String email) {
         if (email.trim().length() == 0)
             this.email = "unspecified";
         else
@@ -310,14 +301,11 @@ public class Person extends GymModel
     }
 
 
-
-
     /**
      * Clear user cache after updating person instance
 
-    @PostUpdate
-    public void postUpdate() {
-        Cache.delete(username);
-    } */
+     @PostUpdate public void postUpdate() {
+     Cache.delete(username);
+     } */
 
 }

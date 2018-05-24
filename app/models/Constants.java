@@ -1,11 +1,10 @@
 /**
-* Declare Gym Utility related constants inside java interface class.
-**/
+ * Declare Gym Utility related constants inside java interface class.
+ **/
 
 package models;
 
-public interface Constants
-{
+public interface Constants {
     float MAX_WEIGHT = 250.0f;      /* 250 kgs */
     float MIN_WEIGHT = 35.0f;       /* 35 kgs */
 
@@ -33,7 +32,7 @@ public interface Constants
     float METERS_IN_5FOOT = 1.524f;
 
     /* from https://www.geeksforgeeks.org/check-email-address-valid-not-java  */
-    String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+    String EMAIL_REGEX = "^[a-zA-Z0-9_+&*-]+(?:\\." +
             "[a-zA-Z0-9_+&*-]+)*@" +
             "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
             "A-Z]{2,7}$";
