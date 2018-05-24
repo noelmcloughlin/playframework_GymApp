@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Not found</title>
+  </head>
+  <body>
+    #{if play.mode.name() == 'DEV'}
+      #{404 result /} 
+    #{/if} 
+    #{else}
+    <h1>Not found</h1>
+      <p>${result.message}</p>
+    #{/else}
+  </body>
+</html>

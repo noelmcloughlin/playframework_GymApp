@@ -1,0 +1,9 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> secure
+    - play -> crud
+    - org.springframework.security
+    - org.springframework.security.crypto.bcrypt.BCrypt
+    - javax.persistence-api

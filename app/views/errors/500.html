@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>  
+  <head>
+    <title>Application error</title>
+  </head>
+  <body>
+    #{if play.mode.name() == 'DEV'} 
+      #{500 exception /} 
+    #{/if} 
+    #{else}
+      <h1>Oops, an error occurred</h1>
+      #{if exception instanceof play.exceptions.PlayException}
+      <p>
+        This exception has been logged with id <strong>${exception.id}</strong>.
+      </p>
+      #{/if} 
+    #{/else}
+  </body>
+</html>
