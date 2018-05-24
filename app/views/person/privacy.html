@@ -1,62 +1,25 @@
-<!DOCTYPE html>
-<meta charset="utf-8"/>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+#{extends 'main.html' /}
+#{set title:'Privacy' /}
 
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <!-- CDN interface -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
-    <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css" rel="stylesheet"/>
-    <title>GDPR cookies consent</title>
-  </head>
+#{menu id:"privacy"/}
 
-  <body>
-    <header>
-      <h1 class="ui center aligned icon huge header"> <i class="circular massive users icon"></i> Play Gym </h1>
-    </header>
-    <section class="ui center aligned stackable container">
-      <section class = "ui message">
-        <i class="close icon"></i>
-          <div class="header">
-            Cookie!
-          </div>
-        <div class="ui fluid row">
-          <div class="column"><i class="en flag"></i></div>
-          <div class="column">By continuing, you consent to the use of cookies to personalise your experience.</div>
-        </div>
-        <div class="ui fluid row">
-          <div class="column"><i class="fr flag"></i></div>
-          <div class="column">En continuant, vous consentez à l'utilisation de cookies pour personnaliser votre expérience.</div>
-        </div>
-        <div class="ui fluid row">
-          <div class="column"><i class="pl flag"></i></div>
-          <div class="column">Kontynuując, wyrażasz zgodę na używanie plików cookie w celu spersonalizowania swoich doświadczeń.</div>
-        </div>
-        <script>
-          $('.message .close')
-            .on('click', function() {
-              $(this)
-                .closest('.message')
-                .transition('fade')
-              ;
-            });
-        </script>
-      </div>
-    </section>
+<section class="ui center aligned one column grid container">
 
-    <section class="ui center aligned bordered padded stackable container">
+  <div class="ui column">
+
       <article class="ui container large message">
-        <h1 class="ui large heading">Before you continue</h1>
-At Play Gym, we are committed to maintaining the trust and confidence of our visitors to our web site. In particular, we want you to know that the Play Gym is not in the business of selling, renting or trading email lists with other companies and businesses for marketing purposes. We just don’t do that sort of thing. But just in case you don’t believe us, in this Privacy Policy, we’ve explain when and why we collect your personal information, how we use it, the limited conditions under which we may disclose it to others and how we keep it secure. Grab a cuppa and read on.
 
-As part of the registration process, we collect personal information. We use that information for a couple of reasons: to tell you about stuff you’ve asked us to tell you about; to contact you if we need to obtain or provide additional information; to check our records are right and to allow you to use Play Gym.
+          <h1 class="ui large heading">Before you continue</h1>
+          At Play Gym, we are committed to maintaining the trust and confidence of our visitors to our web site. In particular, we want you to know that the Play Gym is not in the business of selling, renting or trading email lists with other companies and businesses for marketing purposes. We just don’t do that sort of thing. But just in case you don’t believe us, in this Privacy Policy, we’ve explain when and why we collect your personal information, how we use it, the limited conditions under which we may disclose it to others and how we keep it secure. Grab a cuppa and read on.
 
-'OK' to continue using the product, otherwise, you will not be able to access Play Gym.
-        <br>
-        <br>
-        <button class="ui massive primary button">Continue</button>
-      </article>
-    </section>
-  </body>
-</html>
+          As part of the registration process, we collect personal information. We use that information for a couple of reasons: to tell you about stuff you’ve asked us to tell you about; to contact you if we need to obtain or provide additional information; to check our records are right and to allow you to use Play Gym.
+
+          'OK' to continue using the product, otherwise, you will not be able to access Play Gym.
+          <br>
+          <br>
+          <a href="/privacy/ok" class="ui massive primary button">Continue</a>
+
+    </article>
+  </div>
+
+</section>

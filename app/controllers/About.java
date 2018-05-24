@@ -14,4 +14,11 @@ public class About extends Controller
     Logger.info("Rendering about");
     render("about.html");
   }
+
+  public static void privacy()
+  {
+    Logger.info("Rendering privacy");
+    render("person/privacy.html");
+  }
+
 }

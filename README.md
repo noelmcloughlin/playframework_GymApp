@@ -1,4 +1,4 @@
-Gym Manager Application using Java, playframework, semantic-ui v0.1
+Gym Manager WebApp v0.1, using jdk8, playframework, semantic-ui
 
 # ![](preview.png)
 

@@ -2,6 +2,22 @@
 #{set title:'login' /}
 #{welcomemenu id:"login"/}
 
+<section class="ui left aligned doubling one column stackable grid container">
+
+    <div class="column">
+        <div class="ui inline cookie nag">
+          <span class="title">
+            We use cookies to ensure you get the best experience on our website
+          </span>
+            <i class="close icon"></i>
+            <script>
+                // Wont re-appear unless cleared
+                $('.cookie.nag')
+                    .nag('show');
+            </script>
+        </div>
+    </div>
+</section>
 <section class="ui two column middle aligned doubling stackable grid container">
   <segment class="ui column">
     <form class="ui stacked segment form" action="/authenticate" method="POST">
