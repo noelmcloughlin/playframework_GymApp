@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Assessment class implementation (JPA entity too).
@@ -16,6 +17,7 @@ import java.util.Date;
 public class Assessment extends GymModel
 {
     // Creation Date
+    public Long person_id;
     public String date;      //date created
     public String updated;   //date last updated
     public float weight;
@@ -26,7 +28,31 @@ public class Assessment extends GymModel
     public float hips;
     public String comment;
 
-    //--------- CONSTRUCTORS ---------//
+    //----- helpers -----
+
+    @Override
+    public java.lang.String toString()
+    {
+        return "Assessment{" +
+                "person_id=" + person_id +
+                ", date='" + date + '\'' +
+                ", updated='" + updated + '\'' +
+                ", weight=" + weight +
+                ", chest=" + chest +
+                ", thigh=" + thigh +
+                ", arm=" + arm +
+                ", waist=" + waist +
+                ", hips=" + hips +
+                ", comment='" + comment + '\'' +
+                '}' + super.toString();
+    }
+
+    public static List<Assessment> findallByPersonId(Long person_id)
+    {
+        return find("person_id", person_id).fetch();
+    }
+
+    //---- constructors
 
     /**
      * Default constructor only exists for the sake of JPA (apparently ;-)
@@ -46,12 +72,13 @@ public class Assessment extends GymModel
      * @param hips Assessed hips in inches.
      * @param comment Assessment commentary.
      */
-    public Assessment(float weight, float chest, float thigh, float arm, float waist, float hips, String comment)
+    public Assessment(Long person_id, float weight, float chest, float thigh, float arm, float waist, float hips, String comment)
     {
         // Date as String
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String strDate = dateFormat.format(new Date());
 
+        this.person_id = person_id;
         this.date = this.updated = strDate;
         this.weight = weight;
         this.chest = chest;
@@ -61,6 +88,7 @@ public class Assessment extends GymModel
         this.hips = hips;
         this.comment = comment;
     }
+
 
     //------ Getters and Setters ------//
 

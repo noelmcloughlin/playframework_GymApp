@@ -45,6 +45,7 @@ Trainer(1):
 
 # Assessments
 Assessment(1):
+  person_id: 3
   date: 20180522101001
   update: 20180522101001
   weight: 100.1f
@@ -57,6 +58,7 @@ Assessment(1):
   memberid: 1
 
 Assessment(2):
+  person_id: 3
   date: 20180522101002
   update: 20180522101002
   weight: 100.2f
@@ -69,6 +71,7 @@ Assessment(2):
   memberid: 1
 
 Assessment(3):
+  person_id: 3
   date: 20180522101003
   update: 20180522101003
   weight: 100.3f
@@ -81,6 +84,7 @@ Assessment(3):
   memberid: 1
 
 Assessment(4):
+  person_id: 3
   date: 20180522101004
   update: 20180522101004
   weight: 100.4f
@@ -93,6 +97,7 @@ Assessment(4):
   memberid: 1
 
 Assessment(5):
+  person_id: 3
   date: 20180522101005
   update: 20180522101005
   weight: 100.5f
@@ -105,6 +110,7 @@ Assessment(5):
   memberid: 1
 
 Assessment(6):
+  person_id: 3
   date: 20180522101006
   update: 20180522101006
   weight: 100.6f
@@ -117,6 +123,7 @@ Assessment(6):
   memberid: 1
 
 Assessment(7):
+  person_id: 3
   date: 20180522101007
   update: 20180522101007
   weight: 100.7f
@@ -129,6 +136,7 @@ Assessment(7):
   memberid: 1
 
 Assessment(8):
+  person_id: 3
   date: 20180522101008
   update: 20180522101008
   weight: 100.8f
@@ -141,6 +149,7 @@ Assessment(8):
   memberid: 1
 
 Assessment(9):
+  person_id: 3
   date: 20180522101009
   update: 20180522101009
   weight: 100.9f

@@ -173,8 +173,12 @@ public class Person extends GymModel
      *
      * @param dob String
      */
-    public void setDob(String dob) {
-        this.dob = dob;
+    public void setDob(String dob)
+    {
+        if (dob.trim().length() == 0)
+            this.dob = "unspecified";
+        else
+            this.dob =  dob.trim();
     }
 
     /**
@@ -216,15 +220,18 @@ public class Person extends GymModel
      */
     public void setGender(String gender)
     {
-        switch (gender.toUpperCase().trim().charAt(0))
-        {
-            case 'M':
-                this.gender = gender;
-                break;
-            default:
-                this.gender = "F";
-                break;
-        }
+        if (gender.trim().length() == 0)
+            this.gender = "unspecified";
+        else
+            switch (gender.toUpperCase().trim().charAt(0))
+            {
+                case 'M':
+                    this.gender = gender;
+                    break;
+                default:
+                    this.gender = "F";
+                    break;
+            }
     }
 
     /**
@@ -247,7 +254,7 @@ public class Person extends GymModel
         if (username.length() > Constants.MAX_UNAME_LENGTH )
             this.username = username.substring(0,Constants.MAX_UNAME_LENGTH);
         else if (username.length() == 0)
-            this.username = "J";
+            this.username = "fixme";
         else
             this.username =  username;
     }
@@ -270,6 +277,10 @@ public class Person extends GymModel
      */
     public void setPasswordHash(String passwordHash)
     {
+        if (passwordHash.trim().length() == 0)
+            this.passwordHash = "password";
+
+        // password hashed
         if (passwordHash.startsWith("$2a$"))
             this.passwordHash = passwordHash;
         else
@@ -290,8 +301,12 @@ public class Person extends GymModel
      *
      * @param email email
      */
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEmail(String email)
+    {
+        if (email.trim().length() == 0)
+            this.email = "unspecified";
+        else
+            this.email = email;
     }
 
 
@@ -299,9 +314,10 @@ public class Person extends GymModel
 
     /**
      * Clear user cache after updating person instance
-     */
+
     @PostUpdate
     public void postUpdate() {
         Cache.delete(username);
-    }
+    } */
+
 }

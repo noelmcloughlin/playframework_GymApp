@@ -9,6 +9,5 @@ public class Home extends Controller
   {
     Logger.info("Rendering Home");
     redirect("/");
-   // render("start.html");
   }
 }
