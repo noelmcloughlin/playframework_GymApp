@@ -4,35 +4,27 @@ package models;
  * Member class implements personal stuff, extends Domain model class.
  **/
 
-// downloaded from maven in IntelliJ
-
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.*;
-
-import play.cache.Cache;
+import java.util.Date;
 
 @Entity
-public class Person extends GymModel {
-    // Personal attributes
-    public String firstname;
+public class Person extends GymApp
+{
+    public String firstname;    // personal attrs
     public String lastname;
     public String dob;
     public String address;
-    public String gender;
+    public float height;
+    public Gender gender;
 
-    // Digital attributes
-    public String username;
+    public String username;     // digital attrs
     public String passwordHash;
     public String email;
-
-    private static final Role ROLE = Role.Guest;
+    public Role role;
 
     //----- helpers -----//
-
-    public static Role getRole() {
-        return ROLE;
-    }
 
     public boolean checkPassword(String password) {
         return BCrypt.checkpw(password, this.passwordHash);
@@ -55,7 +47,8 @@ public class Person extends GymModel {
         asString.append(asString).append("'gender': '").append(gender).append("', ");
         asString.append(asString).append("'username': '").append(username).append("', ");
         asString.append(asString).append("'passwordHash': '").append(passwordHash).append("',} ");
-        asString.append(asString).append("'email': ").append(email).append("} ");
+        asString.append(asString).append("'email': ").append(email).append("'}, ");
+        asString.append(asString).append("'role': '").append(role).append("'}");
 
         return asString.toString() + super.toString();
     }
@@ -66,15 +59,26 @@ public class Person extends GymModel {
      * @param username digital username
      * @return Person
      */
-    public static Person findByUsername(String username) {
+    public static Person findByUsername(String username)
+    {
         return find("username", username).first();
+    }
+
+    /**
+     * Find Person by Id
+     * @param id primary key
+     * @return Person
+     */
+    public static Person findById(Long id)
+    {
+        return find("id", id).first();
     }
 
     //-------- Constructor --------//
 
 
     /**
-     * Minimal Constructor for Person (i.e. new user registration)
+     * Minimal Constructor for Person (i.e. new Person registration)
      *
      * @param firstname
      * @param lastname
@@ -82,50 +86,39 @@ public class Person extends GymModel {
      * @param password
      * @param email
      */
-    public Person(String firstname, String lastname, String username, String password, String email) {
+    public Person(String firstname, String lastname, String username, String password, String email, Role role)
+    {
         this.firstname = firstname;
         this.lastname = lastname;
         this.username = username;
         setPasswordHash(password);
         this.email = email;
-    }
-
-    /**
-     * Default Constructor, returning a complete Person instance.
-     *
-     * @param firstname persons first name
-     * @param lastname  persons surname
-     * @param dob       Date of Birth
-     * @param address   personal address
-     * @param gender    personal gender
-     * @param username  persons system username
-     * @param password  persons system passwordHash
-     * @param email     email address
-     **/
-    public Person(String firstname, String lastname, String dob, String address, String gender, String username, String password, String email) {
-        this(firstname, lastname, username, password, email);
-        this.dob = dob;
-        this.address = address;
-        this.gender = gender;
+        this.role = role;
+        this.dated = this.updated = new Date();
     }
 
     //-------- Getters and Setters -----
 
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
     /**
-     * Get person's first name
+     * Get users first name
      *
-     * @return String persons first name
+     * @return String users first name
      */
     public String getFirstname() {
         return firstname;
     }
 
     /**
-     * Set person's first name within constraints
+     * Set users first name within constraints
      *
      * @param firstname String
      */
-    public void setFirstname(String firstname) {
+    public void setFirstname(String firstname)
+    {
         if (firstname.trim().length() == 0)
             this.firstname = "unspecified";
         else
@@ -133,7 +126,7 @@ public class Person extends GymModel {
     }
 
     /**
-     * Get person's surname
+     * Get users surname
      *
      * @return lastname String
      */
@@ -142,11 +135,12 @@ public class Person extends GymModel {
     }
 
     /**
-     * Set person's surname within boundaries
+     * Set users surname within boundaries
      *
      * @param lastname String
      */
-    public void setLastname(String lastname) {
+    public void setLastname(String lastname)
+    {
         lastname.trim();
         if (lastname.length() > Constants.MAX_SNAME_LENGTH)
             this.lastname = lastname.substring(0, Constants.MAX_SNAME_LENGTH);
@@ -156,9 +150,24 @@ public class Person extends GymModel {
             this.lastname = lastname;
     }
 
+    /**
+     * Get personal height
+     * @return float height
+     */
+    public float getHeight() {
+        return height;
+    }
 
     /**
-     * Get person's date of birth
+     * Set personal height
+     * @param height float
+     */
+    public void setHeight(float height) {
+        this.height = height;
+    }
+
+    /**
+     * Get users date of birth
      *
      * @return String dob
      */
@@ -167,7 +176,7 @@ public class Person extends GymModel {
     }
 
     /**
-     * Set person's date of birth ('ddMMyy' format)
+     * Set users date of birth ('ddMMyy' format)
      *
      * @param dob String
      */
@@ -179,7 +188,7 @@ public class Person extends GymModel {
     }
 
     /**
-     * Get person's postal address (one liner)
+     * Get users postal address (one liner)
      *
      * @return String address
      */
@@ -188,7 +197,7 @@ public class Person extends GymModel {
     }
 
     /**
-     * Set person's postal address (one liner).
+     * Set users postal address (one liner).
      *
      * @param address address
      */
@@ -200,32 +209,32 @@ public class Person extends GymModel {
     }
 
     /**
-     * Get person's gender (Male or Female)
+     * Get users gender (Male or Female)
      *
-     * @return String gender
+     * @return Constants.Gender gender
      */
-    public String getGender() {
+    public Gender getGender()
+    {
         return gender;
     }
 
-
     /**
-     * Set person's gender (Male or Female)
+     * Set personal gender (enum Gender), default female.
      *
      * @param gender gender
      */
-    public void setGender(String gender) {
-        if (gender.trim().length() == 0)
-            this.gender = "unspecified";
-        else
-            switch (gender.toUpperCase().trim().charAt(0)) {
-                case 'M':
-                    this.gender = gender;
-                    break;
-                default:
-                    this.gender = "F";
-                    break;
-            }
+    public void setGender(Gender gender)
+    {
+        this.gender = gender;
+    }
+
+    /**
+     * Get users role
+     * @return
+     */
+    public Role getRole()
+    {
+        return this.role;
     }
 
     /**
@@ -238,11 +247,12 @@ public class Person extends GymModel {
     }
 
     /**
-     * Set persons's digital username
+     * Set users's digital username
      *
      * @param username String
      */
-    public void setUsername(String username) {
+    public void setUsername(String username)
+    {
         username.trim();
         if (username.length() > Constants.MAX_UNAME_LENGTH)
             this.username = username.substring(0, Constants.MAX_UNAME_LENGTH);
@@ -262,7 +272,7 @@ public class Person extends GymModel {
     }
 
     /**
-     * Set persons's passwordHash. Hash using 'BCrypt->hashpw' method if necessary.
+     * Set users's passwordHash. Hash using 'BCrypt->hashpw' method if necessary.
      * <p>
      * Idea from MRIdb play application.
      *
@@ -280,7 +290,7 @@ public class Person extends GymModel {
     }
 
     /**
-     * Get person's email address
+     * Get users email address
      *
      * @return String email
      */
@@ -289,23 +299,16 @@ public class Person extends GymModel {
     }
 
     /**
-     * Set person's email address
-     *
+     * Set users email address
      * @param email email
      */
-    public void setEmail(String email) {
+    public void setEmail(String email)
+    {
         if (email.trim().length() == 0)
             this.email = "unspecified";
         else
             this.email = email;
     }
 
-
-    /**
-     * Clear user cache after updating person instance
-
-     @PostUpdate public void postUpdate() {
-     Cache.delete(username);
-     } */
 
 }

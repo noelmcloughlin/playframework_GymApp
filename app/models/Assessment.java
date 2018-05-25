@@ -5,8 +5,6 @@
 package models;
 
 import javax.persistence.*;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -14,12 +12,11 @@ import java.util.List;
  * Assessment class implementation (JPA entity too).
  */
 @Entity
-public class Assessment extends GymModel {
-    // Creation Date
+public class Assessment extends GymApp
+{
     public Long person_id;
-    public String date;      //date created
-    public String updated;   //date last updated
     public float weight;
+    public float height;
     public float chest;
     public float thigh;
     public float arm;
@@ -30,21 +27,21 @@ public class Assessment extends GymModel {
     //----- helpers -----
 
     @Override
-    public java.lang.String toString() {
+    public java.lang.String toString()
+    {
         return "Assessment{" +
-                "person_id=" + person_id +
-                ", date='" + date + '\'' +
-                ", updated='" + updated + '\'' +
-                ", weight=" + weight +
-                ", chest=" + chest +
-                ", thigh=" + thigh +
-                ", arm=" + arm +
-                ", waist=" + waist +
-                ", hips=" + hips +
-                ", comment='" + comment + '\'' +
-                '}' + super.toString();
+                "'person_id': " + person_id +
+                ", 'weight=': " + weight +
+                ", 'height=': " + height +
+                ", 'chest': " + chest +
+                ", 'thigh': " + thigh +
+                ", 'arm': " + arm +
+                ", 'waist': " + waist +
+                ", 'hips': " + hips +
+                ", 'comment': '" + comment + "'}" + super.toString();
     }
 
+    @javax.persistence.OrderBy(value = "date")
     public static List<Assessment> findallByPersonId(Long person_id) {
         return find("person_id", person_id).fetch();
     }
@@ -69,13 +66,10 @@ public class Assessment extends GymModel {
      * @param hips    Assessed hips in inches.
      * @param comment Assessment commentary.
      */
-    public Assessment(Long person_id, float weight, float chest, float thigh, float arm, float waist, float hips, String comment) {
-        // Date as String
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String strDate = dateFormat.format(new Date());
-
+    public Assessment(Long person_id, float weight, float chest, float thigh, float arm, float waist, float hips, String comment)
+    {
         this.person_id = person_id;
-        this.date = this.updated = strDate;
+        this.dated = this.updated = new Date();
         this.weight = weight;
         this.chest = chest;
         this.thigh = thigh;
@@ -83,45 +77,26 @@ public class Assessment extends GymModel {
         this.waist = waist;
         this.hips = hips;
         this.comment = comment;
+        super.setDated(new Date());
     }
 
 
     //------ Getters and Setters ------//
 
     /**
-     * Get the assessment date
-     *
-     * @return String date
+     * Get assessment member id
+     * @return Long person_id
      */
-    public String getDate() {
-        return date;
+    public Long getMember_id() {
+        return person_id;
     }
 
     /**
-     * Set the assessment date
-     *
-     * @param date String
+     * Set assessment member id
+     * @param person_id Long
      */
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    /**
-     * Get date of last Assessment update
-     *
-     * @return String updated
-     */
-    public String getUpdated() {
-        return updated;
-    }
-
-    /**
-     * Set date Assessment was updated last
-     *
-     * @param updated String
-     */
-    public void setUpdated(String updated) {
-        this.updated = updated;
+    public void setMember_id(Long person_id) {
+        this.person_id = person_id;
     }
 
     /**

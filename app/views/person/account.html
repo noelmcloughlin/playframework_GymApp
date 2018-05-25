@@ -38,33 +38,28 @@
                 </div>
             </div>
 
+            <div class="two items">
+                <div>Gender: </div>
+                <select name="gender" class="ui dropdown" value="${person.gender}">
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+            </div>
+
             <div class="two fields">
-                <div class="field">
-                    <label>Gender</label>
-                    <div class="ui selection dropdown">
-                        <input type=hidden name="gender">
-                        <i class="dropdown icon"></i>
-                        <div class="default text">F</div>
-                        <div class="menu">
-                            <div class="item" data-value="M">Male</div>
-                            <div class="item" data-value="F">Female</div>
-                        </div>
-                    </div>
-                </div>
                 <div class="field">
                     <label>Date of Birth</label>
                     <input placeholder="Date of Birth" type="text" name="dob" value="${person.dob}">
                 </div>
-            </div>
-            <div class="field">
+                <div class="field">
                     <label>Address</label>
                     <input placeholder="Address" type="text" name="address" value="${person.address}">
+                </div>
             </div>
             <br><br>
 
             <div class="ui large buttons">
                 <a href="/dashboard" class="ui negative icon button">Cancel</a></a>
-                <!-- TODO Cancel should not POST -->
                 <div class="or"></div>
                 <button class="ui positive submit button">SAVE</button>
             </div>
@@ -130,7 +125,16 @@
                                     prompt: 'Please enter address'
                                 }
                             ]
-                        }
+                        },
+                        gender: {
+                            identifier: 'gender',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please select your gender'
+                                }
+                            ]
+                        },
                     }
                 })
             ;

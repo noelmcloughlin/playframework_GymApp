@@ -1,10 +1,9 @@
 package models;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.regex.Pattern;
 
-public class GymUtility extends GymModel {
+
+public class GymUtility extends GymApp {
 
     /**
      * Return the BMI for member based on calculation of: weight divided by the square of the height.
@@ -13,9 +12,15 @@ public class GymUtility extends GymModel {
      * @param assessment member assessment
      * @return
      */
-    public static double calculateBMI(Member member, Assessment assessment) {
+    public static double calculateBMI(Member member, Assessment assessment)
+    {
         // BMI is weight divided by the square of the height.
-        return (assessment.getWeight() / Math.pow(member.getHeight(), 2)) - 0.04f;
+        return (assessment.getWeight() / Math.pow(Person.findById(member.person_id).getHeight(), 2)) - 0.04f;
+    }
+
+    public static Member findByEmail(String email)
+    {
+        return find("email", email).first();
     }
 
     /**
@@ -53,7 +58,7 @@ public class GymUtility extends GymModel {
      * @return Ideal body weight in kgs
      */
     public static float idealBodyWeight(String gender, double height) {
-        // Calculate number of inches the person's height exceeds five feet.
+        // Calculate number of inches the users height exceeds five feet.
         double i = Math.max(0.0f, (height - Constants.METERS_IN_5FOOT) * Constants.INCHES_IN_METER);
 
         // Calculate & return the weight idealized by Devine.
@@ -72,11 +77,13 @@ public class GymUtility extends GymModel {
      * @param assessment member assessment
      * @return true or false
      */
-    public static boolean isIdealBodyWeight(Member m, Assessment assessment) {
-        return Math.round(assessment.getWeight()) <= idealBodyWeight(m.getGender(), m.getHeight());
+    public static boolean isIdealBodyWeight(Member m, Assessment assessment)
+    {
+        Person p = Person.findById(m.person_id);
+        return Math.round(assessment.getWeight()) <= idealBodyWeight(p.getGender().toString(), p.getHeight());
     }
 
-    //------ Helpers -------//
+    //------ helpers -------
 
     /**
      * Is string a valid email?
@@ -88,14 +95,5 @@ public class GymUtility extends GymModel {
         if (email == null)
             return false;
         return Pattern.compile(Constants.EMAIL_REGEX).matcher(email).matches();
-    }
-
-    /**
-     * Get today's date from current system time.
-     *
-     * @return String Return today's date in text format.
-     */
-    public static String getDateString() {
-        return new SimpleDateFormat("YY/MM/DD").format(new Date());
     }
 }

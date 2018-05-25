@@ -2,162 +2,170 @@
 Person(1):
   firstname: Jane
   lastname: Guest
-  dob: 20010101
+  dob: 2001/10/01
   address: Guest Lodge
-  gender: F
+  height: 2.0f
   username: janedoe
-  password: '$2a$10$Ss4vpRaOpyvqpc.TKf7xIe3ZsCU/UUYwM/nxZmUl0EGGOrkACmBTG'
+  password: $2a$10$Ss4vpRaOpyvqpc.TKf7xIe3ZsCU/UUYwM/nxZmUl0EGGOrkACmBTG
   email: jane@doe.com
+  gender: Female
+  role: Member
+  dated: 2017-05-25
 
 Person(2):
   firstname: Christine
   lastname: Queen
-  dob: 19900101
+  dob: 1990/10/10
   address: Utopia Manor
-  gender: F
+  height: 1.8f
   username: cqueen
-  password: '$2a$10$8gUtMi7MadgMpvsdI3eDQ.k//2RuuF6fo/HL8OoC5lP/Zf0LPAd5S'
+  password: $2a$10$8gUtMi7MadgMpvsdI3eDQ.k//2RuuF6fo/HL8OoC5lP/Zf0LPAd5S
   email: christine@andthequeens.com
+  gender: Female
+  role: Trainer
+  dated: 2018-05-25
 
 Person(3):
   firstname: Jason
   lastname: Bourne
-  dob: 19600101
+  dob: 2008/04/04
   address: Not telling
-  gender: M
+  height: 1.5f
   username: jbourne
-  password: '$2a$10$GhRZrVz2tWRQWP8mQt5OmOgOktDV/Ift9Lwbe7j7XqgqYVWW79Lfu'
+  password: $2a$10$GhRZrVz2tWRQWP8mQt5OmOgOktDV/Ift9Lwbe7j7XqgqYVWW79Lfu
   email: jason@treadstone.com
+  gender: Male
+  role: Member
+  dated: 2018-01-25 13:49:21.778
 
 # Members
-
 Member(1):
   person_id: 3
-  gender: M
   startWeight: 100.1f
-  height: 2.0f
-  chosenpackage: "secret"
+  chosenpackage: 'secret'
+  dated: 2018-05-25
+  updated: 2018-05-25
+
+Member(2):
+  person_id: 1
+  startWeight: 200.1f
+  chosenpackage: 'glamour'
+  dated: 2018-05-25
+  updated: 2018-05-25
 
 # Trainers
 Trainer(1):
   person_id: 2
-  speciality: Scala Rocker
+  speciality: Exercising Scala
+  dated: 2018-05-25
+  updated: 2018-05-25
 
 # Assessments
 Assessment(1):
   person_id: 3
-  date: 20180522101001
-  update: 20180522101001
+  dated: 2018-05-25
+  updated: 2018-05-25
   weight: 100.1f
   chest: 1f
   thigh: 20.1f
   arm: 15.1f
   waist: 50.1f
   hips: 51.1f
-  comment: ""
-  memberid: 1
+  comment: "Cool"
 
 Assessment(2):
   person_id: 3
-  date: 20180522101002
-  update: 20180522101002
+  dated: 2018-05-25
+  updated: 2018-05-25
   weight: 100.2f
   chest: 2f
   thigh: 20.2f
   arm: 15.2f
   waist: 50.2f
   hips: 51.2f
-  comment: ""
-  memberid: 1
+  comment: "Cooler"
 
 Assessment(3):
   person_id: 3
-  date: 20180522101003
-  update: 20180522101003
+  dated: 2018-05-25
+  updated: 2018-05-25
   weight: 100.3f
   chest: 3f
   thigh: 20.3f
   arm: 15.3f
   waist: 50.3f
   hips: 51.3f
-  comment: ""
-  memberid: 1
+  comment: "Awesome"
 
 Assessment(4):
   person_id: 3
-  date: 20180522101004
-  update: 20180522101004
+  dated: 2018-05-25
+  updated: 2018-05-25
   weight: 100.4f
   chest: 4f
   thigh: 20.4f
   arm: 15.4f
   waist: 50.4f
   hips: 51.4f
-  comment: ""
-  memberid: 1
+  comment: "Weird"
 
 Assessment(5):
   person_id: 3
-  date: 20180522101005
-  update: 20180522101005
+  dated: 2018-05-25
+  updated: 2018-05-25
   weight: 100.5f
   chest: 5f
   thigh: 20.5f
   arm: 15.5f
   waist: 50.5f
   hips: 51.5f
-  comment: ""
-  memberid: 1
+  comment: "Not good"
 
 Assessment(6):
   person_id: 3
-  date: 20180522101006
-  update: 20180522101006
+  dated: 2018-05-25
+  updated: 2018-05-25
   weight: 100.6f
   chest: 6f
   thigh: 20.6f
   arm: 15.6f
   waist: 50.6f
   hips: 51.6f
-  comment: ""
-  memberid: 1
+  comment: "Nice"
 
 Assessment(7):
   person_id: 3
-  date: 20180522101007
-  update: 20180522101007
+  dated: 2018-05-25
+  updated: 2018-05-25
   weight: 100.7f
   chest: 7f
   thigh: 20.7f
   arm: 15.7f
   waist: 50.7f
   hips: 51.7f
-  comment: ""
-  memberid: 1
+  comment: "Nicer"
 
 Assessment(8):
   person_id: 3
-  date: 20180522101008
-  update: 20180522101008
+  dated: 2018-05-25
+  updated: 2018-05-25
   weight: 100.8f
   chest: 8f
   thigh: 20.8f
   arm: 15.8f
   waist: 50.8f
   hips: 51.8f
-  comment: ""
-  memberid: 1
+  comment: "Looking great"
 
 Assessment(9):
   person_id: 3
-  date: 20180522101009
-  update: 20180522101009
+  dated: 2018-05-25
+  updated: 2018-05-25
   weight: 100.9f
   chest: 9f
   thigh: 20.9f
   arm: 15.9f
   waist: 50.9f
   hips: 51.9f
-  comment: ""
-  memberid: 1
+  comment: "Terrible"
 

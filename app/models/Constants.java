@@ -1,10 +1,12 @@
-/**
- * Declare Gym Utility related constants inside java interface class.
- **/
 
 package models;
 
-public interface Constants {
+/**
+ * Declare Gym Utility related common constants.
+ **/
+
+public interface Constants
+{
     float MAX_WEIGHT = 250.0f;      /* 250 kgs */
     float MIN_WEIGHT = 35.0f;       /* 35 kgs */
 
