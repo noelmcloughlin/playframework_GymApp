@@ -3,7 +3,67 @@
 
 #{menu id:"dashboard"/}
 
-<section class="ui raised segment">
+<section class="ui container">
+
+    <section class="ui four column center aligned bordered doubling stackable grid container">
+      <div class="row">
+          <div class="row-fluid column">
+              <i class="huge green user icon"></i>
+              <p>${person.firstname.toUpperCase()} ${person.lastname.toUpperCase()}</p>
+          </div>
+          <div class="column">
+              <i class="huge brown compass icon"></i>
+              <p>IDEAL WEIGHT INDICATOR</p>
+          </div>
+          <div class="column">
+              <i class="huge red heartbeat icon">500</i>
+              <p>BMI</p>
+          </div>
+          <div class="column">
+              <i class="huge white user md icon"></i>
+              <p></p>
+          </div>
+      </div>
+    </section>
+
+  <form class="ui stacked segment form" action="/dashboard/addAssessment" method="POST">
+    <section class="ui three fluid fields">
+        <div class="ui six wide field">
+            <label>weight</label>
+            <input type="text" placeholder="weight" name="weight">
+        </div>
+        <div class="ui six wide field">
+            <label>chest</label>
+            <input type="text" placeholder="chest" name="chest">
+        </div>
+        <div class="ui six wide field">
+            <label>thigh</label>
+            <input type="text" placeholder="thigh" name="thigh">
+        </div>
+    </section>
+    <section class="ui three fluid fields">
+        <div class="ui six wide field">
+            <label>arm</label>
+            <input type="text" placeholder="arm" name="arm">
+        </div>
+        <div class="ui six wide field">
+            <label>waist</label>
+            <input type="text" placeholder="waist" name="waist">
+        </div>
+        <div class="ui six wide field">
+            <label>hips</label>
+            <input type="text" placeholder="hips" name="hips">
+        </div>
+    </section>
+    <section class="ui one field">
+        <div class="field">
+            <input type="hidden" name="person_id" value=${person.id}>
+            <button class="ui blue submit button">Add Assessment</button>
+        </div>
+    </section>
+  </form>
+
+  <section class="ui raised segment">
     <header class="ui header">
         ${person.firstname} ${person.lastname}'s Assessments
     </header>
@@ -39,59 +99,8 @@
             <td><a href="/dashboard/deleteAssessment/${assessment.id} " class="ui tiny red button"> Delete </a></td>
         </tr>
         #{/list}
-        </div>
         </tbody>
-
-        <tfoot>
-        <tr>
-            <th colspan="3">
-                <div class="ui right floated pagination menu">
-                    <a class="icon item"> <i class="left chevron icon"></i> </a>
-                    <a class="item">1</a>
-                    <a class="item">2</a>
-                    <a class="item">3</a>
-                    <a class="item">4</a>
-                    <a class="icon item"> <i class="right chevron icon"></i> </a>
-                </div>
-            </th>
-        </tr>
-        </tfoot>
-
     </table>
+  </section>
 </section>
 
-<form class="ui stacked segment form" action="/dashboard/addAssessment" method="POST">
-    <section class="fields">
-        <div class="two wide field">
-            <label>weight</label>
-            <input type="text" placeholder="weight" name="weight">
-        </div>
-        <div class="two wide field">
-            <label>chest</label>
-            <input type="text" placeholder="chest" name="chest">
-        </div>
-        <div class="two wide field">
-            <label>thigh</label>
-            <input type="text" placeholder="thigh" name="thigh">
-        </div>
-        <div class="two wide field">
-            <label>arm</label>
-            <input type="text" placeholder="arm" name="arm">
-        </div>
-        <div class="two wide field">
-            <label>waist</label>
-            <input type="text" placeholder="waist" name="waist">
-        </div>
-        <div class="two wide field">
-            <label>hips</label>
-            <input type="text" placeholder="hips" name="hips">
-        </div>
-        <div class="eight wide field">
-            <label>comment</label>
-            <input type="text" placeholder="comment" name="comment">
-        </div>
-        <div class="eight wide field">
-            <button class="ui blue submit button">Add Assessment</button>
-        </div>
-    </section>
-</form>

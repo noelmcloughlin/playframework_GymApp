@@ -105,11 +105,12 @@ public class Member extends GymApp
      * @param person_id Person id (primary key in user DB)
      * @return Member Instance
      */
-    public static Member findByPersonId(Long person_id) {
+    public static Member findById(Long person_id) {
         return find("person_id", person_id).first();
     }
 
-    public static Member findById(Long person_id) {
+
+    public static Member findByUsername(Long person_id) {
         return find("username", person_id).first();
     }
 

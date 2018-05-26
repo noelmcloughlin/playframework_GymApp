@@ -1,0 +1,45 @@
+#{extends 'main.html' /}
+#{set title:'TrainerBoard' /}
+
+#{menu id:"trainerboard"/}
+
+<segment class="ui container">
+
+    <section class="ui four column center aligned bordered doubling stackable grid container">
+        <div class="row">
+            <div class="row-fluid column">
+                <i class="huge green user icon"></i>
+                <p>${person.firstname.toUpperCase()} ${person.lastname.toUpperCase()}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="ui raised segment">
+        <header class="ui header">
+        ${person.firstname} ${person.lastname}
+        </header>
+        <table class="ui celled table">
+            <thead>
+            <tr>
+                <th>firstname</th>
+                <th>lastname</th>
+                <th>comment</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            #{list items:memberlist, as:'member'}
+            <tr>
+                <td>
+                    <div class="ui ribbon label">${person.firstname}</div>
+                </td>
+                <td> ${person.lastname}</td>
+            </tr>
+            #{/list}
+            </div>
+            </tbody>
+
+        </table>
+    </section>
+</segment>
+

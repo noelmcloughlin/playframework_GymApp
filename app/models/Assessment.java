@@ -41,8 +41,7 @@ public class Assessment extends GymApp
                 ", 'comment': '" + comment + "'}" + super.toString();
     }
 
-    @javax.persistence.OrderBy(value = "date")
-    public static List<Assessment> findallByPersonId(Long person_id) {
+    public static List<Assessment> findByPersonId(Long person_id) {
         return find("person_id", person_id).fetch();
     }
 

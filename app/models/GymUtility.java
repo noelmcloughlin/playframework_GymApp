@@ -1,21 +1,23 @@
 package models;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 
-public class GymUtility extends GymApp {
+public class GymUtility extends GymApp
+{
 
     /**
      * Return the BMI for member based on calculation of: weight divided by the square of the height.
      *
-     * @param member     Gym member
+     * @param person     Gym member
      * @param assessment member assessment
      * @return
      */
-    public static double calculateBMI(Member member, Assessment assessment)
+    public static double calculateBMI(Person person, Assessment assessment)
     {
         // BMI is weight divided by the square of the height.
-        return (assessment.getWeight() / Math.pow(Person.findById(member.person_id).getHeight(), 2)) - 0.04f;
+        return (assessment.getWeight() / Math.pow(person.getHeight(), 2)) - 0.04f;
     }
 
     public static Member findByEmail(String email)
@@ -44,6 +46,7 @@ public class GymUtility extends GymApp {
         else
             return "SEVERELY OBESE";
     }
+
 
     /**
      * Return ideal body weight, according to Devine, given gender & height.

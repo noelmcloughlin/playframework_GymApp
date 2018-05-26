@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Person extends GymApp
@@ -72,6 +73,16 @@ public class Person extends GymApp
     public static Person findById(Long id)
     {
         return find("id", id).first();
+    }
+
+    /**
+     * list all people with Role 'role'.
+     * @param role Role
+     * @return List<> List of people with role
+     */
+    public static List<Person> listPeopleByRole(Role role)
+    {
+        return find("Role", role).fetch();
     }
 
     //-------- Constructor --------//

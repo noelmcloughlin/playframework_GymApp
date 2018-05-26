@@ -1,7 +1,6 @@
 package controllers;
 
-import models.Person;
-import models.Assessment;
+import models.*;
 import play.Logger;
 import play.mvc.Controller;
 
@@ -12,8 +11,22 @@ public class Dashboard extends Controller
     public static void index() {
         Logger.info("Rendering Dashboard");
         Person person = Accounts.getLoggedInPerson();
-        List<Assessment> assessmentlist = Assessment.findallByPersonId(person.id);
-        render("dashboard.html", person, assessmentlist);
+        switch (person.getRole()) {
+            case Member:
+                List<Assessment> assessmentlist = Assessment.findByPersonId(person.id);
+                render("dashboard.html", person, assessmentlist);
+                break;
+
+            case Trainer:
+                Trainer trainer = Trainer.findById(person.id);
+                List<Person> memberList = Person.listPeopleByRole(GymApp.Role.Member);
+                render("trainerboard.html", person, trainer, memberList);
+                break;
+
+            default:
+                redirect("/signup");
+                break;
+        }
     }
 
     //--- add methods
@@ -23,7 +36,7 @@ public class Dashboard extends Controller
      *
      * @param person_id Primary key in Person DB
      * @param weight    member's weight
-     * @param chest     member's chese
+     * @param chest     member's chest
      * @param thigh     thigh
      * @param arm       arm
      * @param waist     waist
