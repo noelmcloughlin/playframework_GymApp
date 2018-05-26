@@ -12,34 +12,31 @@
                 <p>${person.firstname.toUpperCase()} ${person.lastname.toUpperCase()}</p>
             </div>
             <div class="column">
-               <!-- <p> trainer.getSpeciality  Trainer</p> -->
+                <p> member.getSpeciality Trainer</p> -->
             </div>
         </div>
     </section>
 
+    <br><br>
     <section class="ui raised segment">
         <header class="ui header">Gym members</header>
-        <table class="ui celled table">
-            <thead>
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Action</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            #{list items:memberlist, as:'member'}
-            <tr>
-                <td>
-                    <div class="ui ribbon label">${member.firstname}</div>
-                </td>
-                <td> ${member.lastname}</td>
-                <td><a href="/dashboard/deleteMember/${person.id} " class="ui tiny red button"> Delete </a></td>
-            </tr>
-            #{/list}
+    </section>
+    <section class="ui fourteen wide column center aligned bordered doubling stackable grid">
+        #{list items:memberlist, as:'member'}
+            <div class="row">
+                <div class="two wide column">
+                    <td><a href="/dashboard/viewMember/${member.id} " class="ui tiny green button"> View </a>
+                </div>
+                <div class="four wide column">
+                    <td><h3 class="ui header">${member.firstname + " " + member.lastname}</h3></td>
+                </div>
+                <div class="six wide column">
+                    <td>${member.dated}</td>
+                </div>
+                <div class="two wide column">
+                    <td><a href="/dashboard/deleteMember/${member.id} " class="ui tiny red button"> Delete </a>
+                </div>
             </div>
-            </tbody>
-        </table>
+        #{/list}
     </section>
 </section>

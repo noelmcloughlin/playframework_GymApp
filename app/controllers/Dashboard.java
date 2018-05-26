@@ -74,17 +74,17 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
-    public static void deleteMember(Long person_id) {
-        Person person = Person.findById(person_id);
+    public static void deleteMember(Long id) {
+        Person person = Person.findById(id);
         if (person != null)
         {
-            Logger.info("Deleting Member " + person.id);
+            Logger.info("Deleting Member " + id);
             person.delete();
-            Member member = Member.findById(person_id);
+            Member member = Member.findById(id);
             if (member != null)
                 member.delete();
 
-            List<Assessment> assessmentlist = Assessment.findByPersonId(person_id);
+            List<Assessment> assessmentlist = Assessment.findByPersonId(id);
             for (Assessment assessment: assessmentlist)
             {
                 assessment.delete();

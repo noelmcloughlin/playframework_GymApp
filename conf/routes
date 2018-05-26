@@ -16,6 +16,7 @@ GET    /logout                             Accounts.logout
 GET     /dashboard                         Dashboard.index
 POST    /dashboard/addAssessment           Dashboard.addAssessment
 GET     /dashboard/deleteAssessment/{id}   Dashboard.deleteAssessment
+GET     /dashboard/deleteMember/{id}       Dashboard.deleteMember
 
 GET     /about                             About.index
 GET     /privacy                           About.privacy

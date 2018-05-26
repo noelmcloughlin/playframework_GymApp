@@ -38,6 +38,45 @@ Person(3):
   role: Member
   dated: 2018-01-25 13:49:21.778
 
+Person(4):
+  firstname: Kathy
+  lastname: Berry
+  dob: 2006/04/04
+  address: Roar road
+  height: 1.7f
+  username: kberry
+  password: $2a$10$GhRZrVz2tWRQWP8mQt5OmOgOktDV/Ift9Lwbe7j7XqgqYVWW79Lfu
+  email: unspecified
+  gender: Female
+  role: Member
+  dated: 2018-01-25
+
+Person(5):
+  firstname: Al
+  lastname: Grimes
+  dob: 2001/02/04
+  address: Paris road, New York
+  height: 1.9f
+  username: agrimes
+  password: $2a$10$GhRZrVz2tWRQWP8mQt5OmOgOktDV/Ift9Lwbe7j7XqgqYVWW79Lfu
+  email: ''
+  gender: Male
+  role: Member
+  dated: 2014-01-01
+
+Person(6):
+  firstname: Franco
+  lastname: Hardy
+  dob: 1998/01/26
+  address: UAE
+  height: 2.0f
+  username: fhardy
+  password: $2a$10$GhRZrVz2tWRQWP8mQt5OmOgOktDV/Ift9Lwbe7j7XqgqYVWW79Lfu
+  email: franco@hardy.com
+  gender: Male
+  role: Member
+  dated: 2018-01-22
+
 # Members
 Member(1):
   person_id: 3
@@ -48,8 +87,29 @@ Member(1):
 
 Member(2):
   person_id: 1
+  startWeight: 2.0.1f
+  chosenpackage: 'standard'
+  dated: 2018-05-25
+  updated: 2018-05-25
+
+Member(3):
+  person_id: 4
   startWeight: 200.1f
-  chosenpackage: 'glamour'
+  chosenpackage: 'standard'
+  dated: 2018-05-25
+  updated: 2018-05-25
+
+Member(4):
+  person_id: 5
+  startWeight: 220.1f
+  chosenpackage: 'standard'
+  dated: 2018-05-25
+  updated: 2018-05-25
+
+Member(5):
+  person_id: 5
+  startWeight: 210.1f
+  chosenpackage: 'cheap one'
   dated: 2018-05-25
   updated: 2018-05-25
 
