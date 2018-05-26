@@ -12,9 +12,10 @@ import java.util.List;
  * Assessment class implementation (JPA entity too).
  */
 @Entity
-public class Assessment extends GymApp
+public class Assessment extends GymApp implements Comparable<Assessment>
 {
     public Long person_id;
+    public Long trainer_id;
     public float weight;
     public float height;
     public float chest;
@@ -27,10 +28,16 @@ public class Assessment extends GymApp
     //----- helpers -----
 
     @Override
+    public int compareTo(Assessment o) {
+        return getDated().compareTo(o.getDated());
+    }
+
+    @Override
     public java.lang.String toString()
     {
         return "Assessment{" +
                 "'person_id': " + person_id +
+                "'trainer_id': " + trainer_id +
                 ", 'weight=': " + weight +
                 ", 'height=': " + height +
                 ", 'chest': " + chest +
@@ -41,7 +48,7 @@ public class Assessment extends GymApp
                 ", 'comment': '" + comment + "'}" + super.toString();
     }
 
-    public static List<Assessment> findByPersonId(Long person_id) {
+    public static List<Assessment> listAssessments(Long person_id) {
         return find("person_id", person_id).fetch();
     }
 
@@ -57,6 +64,8 @@ public class Assessment extends GymApp
     /**
      * Constructs Assessment instance from supplied arguments.
      *
+     * @param person_id person id
+     * @param trainer_id trainer id
      * @param weight  Assessed weight in kgs.
      * @param chest   Assessed chest in inches
      * @param thigh   Assessed thigh in inches
@@ -65,9 +74,10 @@ public class Assessment extends GymApp
      * @param hips    Assessed hips in inches.
      * @param comment Assessment commentary.
      */
-    public Assessment(Long person_id, float weight, float chest, float thigh, float arm, float waist, float hips, String comment)
+    public Assessment(Long person_id, Long trainer_id, float weight, float chest, float thigh, float arm, float waist, float hips, String comment)
     {
         this.person_id = person_id;
+        this.trainer_id = trainer_id;
         this.dated = this.updated = new Date();
         this.weight = weight;
         this.chest = chest;
@@ -81,22 +91,6 @@ public class Assessment extends GymApp
 
 
     //------ Getters and Setters ------//
-
-    /**
-     * Get assessment member id
-     * @return Long person_id
-     */
-    public Long getMember_id() {
-        return person_id;
-    }
-
-    /**
-     * Set assessment member id
-     * @param person_id Long
-     */
-    public void setMember_id(Long person_id) {
-        this.person_id = person_id;
-    }
 
     /**
      * Get assessed weight
@@ -116,94 +110,8 @@ public class Assessment extends GymApp
         this.weight = weight;
     }
 
-    /**
-     * get assessed chest measurement
-     *
-     * @return float chest
-     */
-    public float getChest() {
-        return chest;
-    }
-
-    /**
-     * Set assessed chest measurement
-     *
-     * @param chest float
-     */
-    public void setChest(float chest) {
-        this.chest = chest;
-    }
-
-    /**
-     * Get assessed thigh measurement
-     *
-     * @return float thigh
-     */
-    public float getThigh() {
-        return thigh;
-    }
-
-    /**
-     * Set thigh measurement
-     *
-     * @param thigh float
-     */
-    public void setThigh(float thigh) {
-        this.thigh = thigh;
-    }
-
-    /**
-     * Get upper arm measurement
-     *
-     * @return float arm
-     */
-    public float getArm() {
-        return arm;
-    }
-
-    /**
-     * Set upper arm measurement
-     *
-     * @param arm float
-     */
-    public void setArm(float arm) {
-        this.arm = arm;
-    }
-
-    /**
-     * Get waist measurement
-     *
-     * @return waist float
-     */
-    public float getWaist() {
-        return waist;
-    }
-
-    /**
-     * Set waist measurement
-     *
-     * @param waist float
-     */
-    public void setWaist(float waist) {
-        this.waist = waist;
-    }
-
-    /**
-     * Get Hip measurement
-     *
-     * @return hips float
-     */
-    public float getHips() {
-        return hips;
-    }
-
-    /**
-     * Set Hip measurement
-     *
-     * @param hips float
-     */
-    public void setHips(float hips) {
-        this.hips = hips;
+    public float getHeight() {
+        return height;
     }
 
     /**

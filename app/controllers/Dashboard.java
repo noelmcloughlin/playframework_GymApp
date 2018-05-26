@@ -4,26 +4,39 @@ import models.*;
 import play.Logger;
 import play.mvc.Controller;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Dashboard extends Controller
 {
-    public static void index() {
+    public static GymUtility utils = new GymUtility();
+
+    public static void dashboard()
+    {
+        double bmi = 0;
+
         Logger.info("Rendering Dashboard");
         Person person = Accounts.getLoggedInPerson();
         if (person == null)
             redirect("/login");
         else
-            switch (person.getRole()) {
+            switch (person.getRole())
+            {
                 case Member:
-                    List<Assessment> assessmentlist = Assessment.findByPersonId(person.id);
-                    render("dashboard.html", person, assessmentlist);
+                    List<Assessment> assessmentList = person.getAssessmentList(person.id);
+                    if (assessmentList.size() > 0) {
+                        Collections.sort(assessmentList);
+                        bmi = utils.calculateBMI(person, assessmentList.get(assessmentList.size()-1));
+                    }
+                    Logger.info("Rendering Dashboard bmi " + bmi);
+                    render("person/dashboard.html", person, bmi, assessmentList);
                     break;
 
                 case Trainer:
                     Trainer trainer = Trainer.findById(person.id);
                     List<Person> memberlist = Person.listPeopleByRole(GymApp.Role.Member);
-                    render("trainerboard.html", person, trainer, memberlist);
+                    render("trainer/dashboard.html", person, trainer, memberlist);
                     break;
 
                 default:
@@ -37,7 +50,8 @@ public class Dashboard extends Controller
     /**
      * Add Assessment passing person_id argument.
      *
-     * @param person_id Primary key in Person DB
+     * @param person_id Primary id
+     * @param trainer_id Author id
      * @param weight    member's weight
      * @param chest     member's chest
      * @param thigh     thigh
@@ -46,20 +60,10 @@ public class Dashboard extends Controller
      * @param hips      hips
      * @param comment   trainer comment
      */
-    public static void addAssessment(Long person_id, float weight, float chest, float thigh, float arm, float waist, float hips, String comment) {
-        Assessment assessment = new Assessment(person_id, weight, chest, thigh, arm, waist, hips, comment);
-        assessment.save();
-        Logger.info("Added Assessment");
-        redirect("/dashboard");
-    }
-
-    /**
-     * Add Assessment getting person_id from session cookie
-     */
-    public static void addAssessment(float weight, float chest, float thigh, float arm, float waist, float hips, String comment) {
-        Long person_id = Long.parseLong(session.get("logged_in_Personid"));
-
-        Assessment assessment = new Assessment(person_id, weight, chest, thigh, arm, waist, hips, comment);
+    public static void addAssessment(Long person_id, Long trainer_id, float weight, float chest, float thigh,
+                                     float arm, float waist, float hips, String comment)
+    {
+        Assessment assessment = new Assessment(person_id, trainer_id, weight, chest, thigh, arm, waist, hips, comment);
         assessment.save();
         Logger.info("Added Assessment");
         redirect("/dashboard");
@@ -74,17 +78,19 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
-    public static void deleteMember(Long id) {
+    public static void deleteMember(Long id)
+    {
         Person person = Person.findById(id);
         if (person != null)
         {
-            Logger.info("Deleting Member " + id);
+            Logger.info("Deleting Person " + id);
             person.delete();
-            Member member = Member.findById(id);
+            Member member = Member.findByPersonId(id);
             if (member != null)
+                Logger.info("Deleting Member " + id);
                 member.delete();
 
-            List<Assessment> assessmentlist = Assessment.findByPersonId(id);
+            List<Assessment> assessmentlist = Assessment.listAssessments(id);
             for (Assessment assessment: assessmentlist)
             {
                 assessment.delete();
@@ -93,5 +99,19 @@ public class Dashboard extends Controller
 
         }
         redirect("/dashboard");
+    }
+
+    public static void showMember(Long id)
+    {
+        double bmi = 0;
+
+        Logger.info("Rendering showMember " + id);
+        Person person = Person.findById(id);
+        List<Assessment> assessmentList = person.getAssessmentList(person.id);
+        if (assessmentList.size() > 0) {
+            Collections.sort(assessmentList);
+            bmi = utils.calculateBMI(person, assessmentList.get(assessmentList.size()-1));
+        }
+        render("trainer/member.html", person, utils, assessmentList);
     }
 }

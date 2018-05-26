@@ -13,10 +13,13 @@ GET    /showMe                             Accounts.showMe
 POST   /editMe                             Accounts.editMe
 GET    /logout                             Accounts.logout
 
-GET     /dashboard                         Dashboard.index
+GET     /dashboard                         Dashboard.dashboard
 POST    /dashboard/addAssessment           Dashboard.addAssessment
+POST    /dashboard/editComment             Dashboard.editComment
 GET     /dashboard/deleteAssessment/{id}   Dashboard.deleteAssessment
 GET     /dashboard/deleteMember/{id}       Dashboard.deleteMember
+GET     /dashboard/showMember/{id}         Dashboard.showMember
+GET     /dashboard/editMember/{id}         Dashboard.editMember
 
 GET     /about                             About.index
 GET     /privacy                           About.privacy

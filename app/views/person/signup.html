@@ -29,27 +29,33 @@
             <div class="two fields">
                 <div class="field">
                     <label>First Name</label>
-                    <input placeholder="First Name" type="text" name="firstname">
+                    <input placeholder="Jane" type="text" name="firstname">
                     <div class="ui pointing label">Please enter your first name</div>
                 </div>
                 <div class="field">
                     <label>Last Name</label>
-                    <input placeholder="Last Name" type="text" name="lastname">
+                    <input placeholder="doe" type="text" name="lastname">
                 </div>
             </div>
             <div class="two fields">
                 <div class="field">
                     <label>Username</label>
-                    <input placeholder="Username" type="text" name="username">
+                    <input placeholder="joeblogs" type="text" name="username">
                 </div>
                 <div class="field">
                     <label>Password</label>
                     <input type="password" name="password">
                 </div>
             </div>
-            <div class="field">
-                <label>Email</label>
-                <input placeholder="Email" type="text" name="email">
+            <div class="two fields">
+                <div class="field">
+                    <label>Email</label>
+                    <input placeholder="name@domain" type="text" name="email">
+                </div>
+                <div class="field">
+                    <label>Height</label>
+                    <input placeholder="0.0m" type="text" name="height">
+                </div>
             </div>
             <div class="inline field">
                 <div class="ui checkbox">
@@ -92,6 +98,15 @@
                                 {
                                     type: 'empty',
                                     prompt: 'Please enter a username'
+                                }
+                            ]
+                        },
+                        height: {
+                            identifier: 'height',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please enter your height in meters'
                                 }
                             ]
                         },

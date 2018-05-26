@@ -1,6 +1,7 @@
 package models;
 
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Pattern;
 
 
@@ -10,20 +11,15 @@ public class GymUtility extends GymApp
     /**
      * Return the BMI for member based on calculation of: weight divided by the square of the height.
      *
-     * @param person     Gym member
-     * @param assessment member assessment
-     * @return
+     * @param person    Members personal id
+     * @return double
      */
     public static double calculateBMI(Person person, Assessment assessment)
     {
         // BMI is weight divided by the square of the height.
-        return (assessment.getWeight() / Math.pow(person.getHeight(), 2)) - 0.04f;
+        return (assessment.getWeight() / Math.pow(assessment.getHeight(), 2)) - 0.04f;
     }
 
-    public static Member findByEmail(String email)
-    {
-        return find("email", email).first();
-    }
 
     /**
      * Return the category the BMI belongs to:
@@ -86,7 +82,6 @@ public class GymUtility extends GymApp
         return Math.round(assessment.getWeight()) <= idealBodyWeight(p.getGender().toString(), p.getHeight());
     }
 
-    //------ helpers -------
 
     /**
      * Is string a valid email?
@@ -94,9 +89,33 @@ public class GymUtility extends GymApp
      * @param email Email to be tested against an email regex
      * @return true or false
      */
-    public static boolean isValidEmail(String email) {
+    public static boolean isValidEmail(String email)
+    {
         if (email == null)
             return false;
         return Pattern.compile(Constants.EMAIL_REGEX).matcher(email).matches();
     }
+
+    /**
+     * Given a date, return a formatted string
+     * @param date Date
+     * @param dateformat dateformat
+     * @return String dateformat
+     */
+    public static String showDate(Date date, String dateformat)
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat(dateformat);
+        return formatter.format(date);
+    }
+
+    /**
+     * Given a date, return default format (dd-MMM-yyyy HH:mm)
+     * @param date Date
+     * @return String
+     */
+    public static String showDate(Date date)
+    {
+        return showDate(date, "dd-MMM-yyyy H:mm");
+    }
+
 }

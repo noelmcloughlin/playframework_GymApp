@@ -4,8 +4,6 @@ import models.*;
 import play.Logger;
 import play.mvc.Controller;
 
-import java.util.List;
-
 public class Accounts extends Controller
 {
     public static void signup() {

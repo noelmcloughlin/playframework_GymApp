@@ -1,0 +1,72 @@
+#{extends 'main.html' /}
+#{set title:'Member Dashboard' /}
+
+#{menu id:"dashboard"/}
+
+<section class="ui container">
+
+
+    <section class="ui four column center aligned bordered doubling stackable grid container">
+        <div class="row">
+            <div class="row-fluid column">
+                <i class="huge green user icon"></i>
+                <p>${person.firstname.toUpperCase()} ${person.lastname.toUpperCase()}</p>
+            </div>
+            <div class="column">
+                <i class="huge brown compass icon"></i>
+                <p>IDEAL WEIGHT INDICATOR</p>
+            </div>
+            <div class="column">
+                <i class="huge red heartbeat icon">${bmi}</i>
+                <p>BMI</p>
+            </div>
+            <div class="column">
+                <i class="huge white user md icon"></i>
+                <p></p>
+            </div>
+        </div>
+    </section>
+
+  <section class="ui raised segment">
+    <header class="ui header">
+        ${person.firstname} ${person.lastname}'s Assessments
+    </header>
+    <table class="ui celled table">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Updated</th>
+            <th>Weight</th>
+            <th>Chest</th>
+            <th>Thigh</th>
+            <th>Arm</th>
+            <th>Waist</th>
+            <th>Hips</th>
+            <th>Trend</th>
+            <th>comment</th>
+        </tr>
+        </thead>
+
+        <tbody>
+            #{list items:assessmentlist, as:'assessment'}
+            <tr>
+                <td>
+                    <div class="ui ribbon label">${assessment.dated.format('dd MMM yyyy hh:mm')}</div>
+                </td>
+                <td> ${assessment.updated.format('dd MMM yyyy hh:mm')}</td>
+                <td> ${assessment.weight}</td>
+                <td> ${assessment.chest}</td>
+                <td> ${assessment.thigh}</td>
+                <td> ${assessment.arm}</td>
+                <td> ${assessment.waist}</td>
+                <td> ${assessment.hips}</td>
+                <td> ssss </td>
+                <td> ${assessment.comment}</td>
+                <td><a href="/dashboard/deleteAssessment/${assessment.id}"><i class="medium red trash icon"></i> </a></td>
+            </tr>
+            #{/list}
+        </tbody>
+    </table>
+  </section>
+</section>
+

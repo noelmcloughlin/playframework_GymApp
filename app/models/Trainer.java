@@ -28,14 +28,6 @@ public class Trainer extends GymApp
         return asString.toString() + super.toString();
     }
 
-    /**
-     * Find the Trainer record by id
-     * @param person_id Person primary key in member DB
-     * @return Trainer Instance
-     */
-    public static Trainer findById(Long person_id) {
-        return find("person_id", person_id).first();
-    }
 
     //-------- Constructors -------//
 

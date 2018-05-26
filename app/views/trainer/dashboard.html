@@ -1,23 +1,21 @@
 #{extends 'main.html' /}
-#{set title:'TrainerBoard' /}
+#{set title:'Trainer Dashboard' /}
 
-#{menu id:"trainerboard"/}
+#{menu id:"dashboard"/}
 
 <section class="ui container">
+
 
     <section class="ui four column center aligned bordered doubling stackable grid container">
         <div class="row">
             <div class="row-fluid column">
                 <i class="huge green user icon"></i>
-                <p>${person.firstname.toUpperCase()} ${person.lastname.toUpperCase()}</p>
-            </div>
-            <div class="column">
-                <p> member.getSpeciality Trainer</p> -->
+                <p>${person.firstname.toUpperCase()} ${person.lastname.toUpperCase()} TRAINER</p>
             </div>
         </div>
     </section>
-
     <br><br>
+
     <section class="ui raised segment">
         <header class="ui header">Gym members</header>
     </section>
@@ -25,7 +23,7 @@
         #{list items:memberlist, as:'member'}
             <div class="row">
                 <div class="two wide column">
-                    <td><a href="/dashboard/viewMember/${member.id} " class="ui tiny green button"> View </a>
+                    <td><a href="/dashboard/showMember/${member.id} " class="ui tiny green button"> View </a>
                 </div>
                 <div class="four wide column">
                     <td><h3 class="ui header">${member.firstname + " " + member.lastname}</h3></td>

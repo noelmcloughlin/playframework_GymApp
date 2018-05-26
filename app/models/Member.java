@@ -5,9 +5,6 @@ package models;
  **/
 
 import javax.persistence.*;
-import java.util.HashMap;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 @Entity
 public class Member extends GymApp
@@ -16,6 +13,37 @@ public class Member extends GymApp
     public float startWeight;
     public String chosenPackage;
 
+
+    //----- helpers -----
+
+    /**
+     *  Return a string representation of the Member data structure.
+     *  Include inherited attributes from super class
+     *
+     * @return String instance
+     */
+    @Override
+    public String toString() {
+        StringBuilder asString = new StringBuilder();
+
+        asString.append(asString).append("Member{'startWeight': ").append(startWeight).append("', ");
+        asString.append(asString).append("'chosenPackage': '").append(chosenPackage).append("',} ");
+
+        return asString.toString() + super.toString();
+    }
+
+    /**
+     * Find member by person id
+     *
+     * @param person_id person id of member
+     * @return Member Member
+     */
+    public static Member findByPersonId(Long person_id)
+    {
+        return find("person_id", person_id).first();
+    }
+
+
     //-------- Constructors -------//
 
     public Member(Long person_id, float startWeight, String chosenPackage) {
@@ -23,7 +51,6 @@ public class Member extends GymApp
         this.startWeight = startWeight;
         this.chosenPackage = chosenPackage;
     }
-
 
     //-------- Getter's and Setter's -------//
 
@@ -76,38 +103,4 @@ public class Member extends GymApp
         this.chosenPackage = chosenPackage;
     }
 
-
-
-    //----- helpers -----//
-
-    /**
-     *  Return a string representation of the Member data structure.
-     *  Include inherited attributes from super class
-     *
-     * @return String instance
-     */
-    @Override
-    public String toString() {
-        StringBuilder asString = new StringBuilder();
-
-        asString.append(asString).append("Member{'startWeight': ").append(startWeight).append("', ");
-        asString.append(asString).append("'chosenPackage': '").append(chosenPackage).append("',} ");
-
-        return asString.toString() + super.toString();
-    }
-
-    /**
-     * Find the Member  this member represents.
-     *
-     * @param person_id Person id (primary key in user DB)
-     * @return Member Instance
-     */
-    public static Member findById(Long person_id) {
-        return find("person_id", person_id).first();
-    }
-
-
-    public static Member findByUsername(Long person_id) {
-        return find("username", person_id).first();
-    }
 }

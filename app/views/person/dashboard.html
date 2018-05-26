@@ -1,58 +1,58 @@
 #{extends 'main.html' /}
-#{set title:'Dashboard' /}
+#{set title:'Member Dashboard' /}
 
 #{menu id:"dashboard"/}
 
 <section class="ui container">
 
     <section class="ui four column center aligned bordered doubling stackable grid container">
-      <div class="row">
-          <div class="row-fluid column">
-              <i class="huge green user icon"></i>
-              <p>${person.firstname.toUpperCase()} ${person.lastname.toUpperCase()}</p>
-          </div>
-          <div class="column">
-              <i class="huge brown compass icon"></i>
-              <p>IDEAL WEIGHT INDICATOR</p>
-          </div>
-          <div class="column">
-              <i class="huge red heartbeat icon">500</i>
-              <p>BMI</p>
-          </div>
-          <div class="column">
-              <i class="huge white user md icon"></i>
-              <p></p>
-          </div>
-      </div>
+        <div class="row">
+            <div class="row-fluid column">
+                <i class="huge green user icon"></i>
+                <p>${person.firstname.toUpperCase()} ${person.lastname.toUpperCase()}</p>
+            </div>
+            <div class="column">
+                <i class="huge brown compass icon"></i>
+                <p>IDEAL WEIGHT INDICATOR</p>
+            </div>
+            <div class="column">
+                <i class="huge red heartbeat icon">${bmi}</i>
+                <p>BMI</p>
+            </div>
+            <div class="column">
+                <i class="huge white user md icon"></i>
+                <p></p>
+            </div>
+        </div>
     </section>
 
   <form class="ui stacked segment form" action="/dashboard/addAssessment" method="POST">
     <section class="ui three fluid fields">
         <div class="ui six wide field">
             <label>weight</label>
-            <input type="text" placeholder="weight" name="weight">
+            <input type="text" placeholder="00.00kg" name="weight">
         </div>
         <div class="ui six wide field">
             <label>chest</label>
-            <input type="text" placeholder="chest" name="chest">
+            <input type="text" placeholder="00.00cm" name="chest">
         </div>
         <div class="ui six wide field">
             <label>thigh</label>
-            <input type="text" placeholder="thigh" name="thigh">
+            <input type="text" placeholder="00.00cm" name="thigh">
         </div>
     </section>
     <section class="ui three fluid fields">
         <div class="ui six wide field">
             <label>arm</label>
-            <input type="text" placeholder="arm" name="arm">
+            <input type="text" placeholder="00.00cm" name="arm">
         </div>
         <div class="ui six wide field">
             <label>waist</label>
-            <input type="text" placeholder="waist" name="waist">
+            <input type="text" placeholder="00.00cm" name="waist">
         </div>
         <div class="ui six wide field">
             <label>hips</label>
-            <input type="text" placeholder="hips" name="hips">
+            <input type="text" placeholder="00.00cm" name="hips">
         </div>
     </section>
     <section class="ui one field">
@@ -70,14 +70,15 @@
     <table class="ui celled table">
         <thead>
         <tr>
-            <th>dated</th>
-            <th>updated</th>
-            <th>weight</th>
-            <th>chest</th>
-            <th>thigh</th>
-            <th>arm</th>
-            <th>waist</th>
-            <th>hips</th>
+            <th>Date</th>
+            <th>Updated</th>
+            <th>Weight</th>
+            <th>Chest</th>
+            <th>Thigh</th>
+            <th>Arm</th>
+            <th>Waist</th>
+            <th>Hips</th>
+            <th>Trend</th>
             <th>comment</th>
         </tr>
         </thead>
@@ -86,20 +87,25 @@
         #{list items:assessmentlist, as:'assessment'}
         <tr>
             <td>
-                <div class="ui ribbon label">${assessment.dated}</div>
+                <div class="ui ribbon label">${assessment.dated.format('dd MMM yyyy hh:mm')}</div>
             </td>
-            <td> ${assessment.updated}</td>
+            <td> ${assessment.updated.format('dd MMM yyyy hh:mm')}</td>
             <td> ${assessment.weight}</td>
             <td> ${assessment.chest}</td>
             <td> ${assessment.thigh}</td>
             <td> ${assessment.arm}</td>
             <td> ${assessment.waist}</td>
             <td> ${assessment.hips}</td>
+            <td> ssss </td>
             <td> ${assessment.comment}</td>
-            <td><a href="/dashboard/deleteAssessment/${assessment.id} " class="ui tiny red button"> Delete </a></td>
+            <td><a href="/dashboard/deleteAssessment/${assessment.id}"><i class="red trash icon"></i></a></td>
         </tr>
         #{/list}
         </tbody>
+
+        <script>
+            document.getElementById("demo").innerHTML = d.toDateString();
+        </script>
     </table>
   </section>
 </section>

@@ -7,8 +7,8 @@ package models;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Entity
 public class Person extends GymApp
@@ -322,6 +322,56 @@ public class Person extends GymApp
             this.email = "unspecified";
         else
             this.email = email;
+    }
+
+
+    /**
+     * Given a date, return a formatted string
+     * @param date Date
+     * @param dateformat dateformat
+     * @return String dateformat
+     */
+    public static String showDate(Date date, String dateformat)
+    {
+        SimpleDateFormat formatter = new SimpleDateFormat(dateformat);
+        return formatter.format(date);
+    }
+
+    /**
+     * Given a date, return default format (dd-MMM-yyyy HH:mm)
+     * @param date Date
+     * @return String
+     */
+    public static String showDate(Date date)
+    {
+        return showDate(date, "dd-MMM-yyyy H:mm");
+    }
+
+
+
+    /**
+     * Get assessments for member by person_id
+     * @param person_id person id
+     * @return List of assessments
+     */
+    public List<Assessment> getAssessmentList(Long person_id)
+    {
+        return Assessment.listAssessments(person_id);
+    }
+
+
+
+    /**
+     * Returns the latest assessment based on last entry (by calendar date).
+     * Return null if no assessments.
+     *
+     * @return Assessment The most recent assessment
+     */
+    public Assessment latestAssessment(Long person_id)
+    {
+        List<Assessment> assessmentList = getAssessmentList(person_id);
+        Collections.sort( assessmentList );
+        return assessmentList.get(assessmentList.size());
     }
 
 

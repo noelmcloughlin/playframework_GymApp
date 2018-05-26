@@ -76,12 +76,4 @@ public abstract class GymApp extends GenericModel {
     public void setDated(Date dated) {
         this.dated = dated;
     }
-
-    public Date getUpdated() {
-        return updated;
-    }
-
-    public void setUpdated(Date updated) {
-        this.updated = updated;
-    }
 }
