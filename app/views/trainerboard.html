@@ -3,7 +3,7 @@
 
 #{menu id:"trainerboard"/}
 
-<segment class="ui container">
+<section class="ui container">
 
     <section class="ui four column center aligned bordered doubling stackable grid container">
         <div class="row">
@@ -11,19 +11,20 @@
                 <i class="huge green user icon"></i>
                 <p>${person.firstname.toUpperCase()} ${person.lastname.toUpperCase()}</p>
             </div>
+            <div class="column">
+               <!-- <p> trainer.getSpeciality  Trainer</p> -->
+            </div>
         </div>
     </section>
 
     <section class="ui raised segment">
-        <header class="ui header">
-        ${person.firstname} ${person.lastname}
-        </header>
+        <header class="ui header">Gym members</header>
         <table class="ui celled table">
             <thead>
             <tr>
-                <th>firstname</th>
-                <th>lastname</th>
-                <th>comment</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Action</th>
             </tr>
             </thead>
 
@@ -31,15 +32,14 @@
             #{list items:memberlist, as:'member'}
             <tr>
                 <td>
-                    <div class="ui ribbon label">${person.firstname}</div>
+                    <div class="ui ribbon label">${member.firstname}</div>
                 </td>
-                <td> ${person.lastname}</td>
+                <td> ${member.lastname}</td>
+                <td><a href="/dashboard/deleteMember/${person.id} " class="ui tiny red button"> Delete </a></td>
             </tr>
             #{/list}
             </div>
             </tbody>
-
         </table>
     </section>
-</segment>
-
+</section>

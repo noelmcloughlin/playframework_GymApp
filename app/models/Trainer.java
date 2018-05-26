@@ -1,6 +1,7 @@
 package models;
 
 import javax.persistence.Entity;
+import java.util.Date;
 
 /**
  * Trainer class implements trainership stuff. Extends Domain model class.
@@ -27,11 +28,21 @@ public class Trainer extends GymApp
         return asString.toString() + super.toString();
     }
 
+    /**
+     * Find the Trainer record by id
+     * @param person_id Person primary key in member DB
+     * @return Trainer Instance
+     */
+    public static Trainer findById(Long person_id) {
+        return find("person_id", person_id).first();
+    }
+
     //-------- Constructors -------//
 
     public Trainer(Long person_id, String speciality) {
         this.person_id = person_id;
         this.speciality = speciality;
+        this.dated = this.updated = new Date();
     }
 
 

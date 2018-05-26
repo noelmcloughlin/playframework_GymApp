@@ -82,11 +82,13 @@ public class Person extends GymApp
      */
     public static List<Person> listPeopleByRole(Role role)
     {
-        return find("Role", role).fetch();
+        return find("role", role).fetch();
     }
 
-    //-------- Constructor --------//
 
+
+
+    //-------- Constructor --------
 
     /**
      * Minimal Constructor for Person (i.e. new Person registration)
@@ -96,6 +98,7 @@ public class Person extends GymApp
      * @param username
      * @param password
      * @param email
+     * @param role
      */
     public Person(String firstname, String lastname, String username, String password, String email, Role role)
     {

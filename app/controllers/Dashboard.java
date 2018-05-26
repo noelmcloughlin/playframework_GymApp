@@ -11,22 +11,25 @@ public class Dashboard extends Controller
     public static void index() {
         Logger.info("Rendering Dashboard");
         Person person = Accounts.getLoggedInPerson();
-        switch (person.getRole()) {
-            case Member:
-                List<Assessment> assessmentlist = Assessment.findByPersonId(person.id);
-                render("dashboard.html", person, assessmentlist);
-                break;
+        if (person == null)
+            redirect("/login");
+        else
+            switch (person.getRole()) {
+                case Member:
+                    List<Assessment> assessmentlist = Assessment.findByPersonId(person.id);
+                    render("dashboard.html", person, assessmentlist);
+                    break;
 
-            case Trainer:
-                Trainer trainer = Trainer.findById(person.id);
-                List<Person> memberList = Person.listPeopleByRole(GymApp.Role.Member);
-                render("trainerboard.html", person, trainer, memberList);
-                break;
+                case Trainer:
+                    Trainer trainer = Trainer.findById(person.id);
+                    List<Person> memberlist = Person.listPeopleByRole(GymApp.Role.Member);
+                    render("trainerboard.html", person, trainer, memberlist);
+                    break;
 
-            default:
-                redirect("/signup");
-                break;
-        }
+                default:
+                    redirect("/signup");
+                    break;
+            }
     }
 
     //--- add methods
@@ -68,6 +71,27 @@ public class Dashboard extends Controller
         Assessment assessment = Assessment.findById(id);
         assessment.delete();
         Logger.info("Deleting Assessment " + id);
+        redirect("/dashboard");
+    }
+
+    public static void deleteMember(Long person_id) {
+        Person person = Person.findById(person_id);
+        if (person != null)
+        {
+            Logger.info("Deleting Member " + person.id);
+            person.delete();
+            Member member = Member.findById(person_id);
+            if (member != null)
+                member.delete();
+
+            List<Assessment> assessmentlist = Assessment.findByPersonId(person_id);
+            for (Assessment assessment: assessmentlist)
+            {
+                assessment.delete();
+                Logger.info("Deleting Assessment " + assessment.id);
+            }
+
+        }
         redirect("/dashboard");
     }
 }

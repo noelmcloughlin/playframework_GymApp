@@ -4,6 +4,8 @@ import models.*;
 import play.Logger;
 import play.mvc.Controller;
 
+import java.util.List;
+
 public class Accounts extends Controller
 {
     public static void signup() {
@@ -20,14 +22,23 @@ public class Accounts extends Controller
         Logger.info("Registering new person " + username);
         Person person = new Person(firstname, lastname, username, password, email, role);
         person.save();
+        switch (person.getRole())
+        {
+            case Member:
+                Member member = new Member(person.id, 0, "Standard");
+                member.save();
+                break;
+
+            case Trainer:
+                Trainer trainer = new Trainer(person.id, "Fitness");
+                trainer.save();
+                break;
+        }
         redirect("/login");
     }
 
     public static void showMe() {
         Person person = getLoggedInPerson();
-
-        // Use render(view, person) not play.Formfactory. More simple than ..
-        // https://stackoverflow.com/questions/28812574/pre-fill-form-with-data-play-framework
         render("person/account.html", person);
     }
 

@@ -15,16 +15,13 @@ public class Member extends GymApp
     public Long person_id;
     public float startWeight;
     public String chosenPackage;
-    public HashMap<String, Assessment> Assessments = new HashMap<>();
-
 
     //-------- Constructors -------//
 
-    public Member(Long person_id, float startWeight, String chosenPackage, HashMap<String, Assessment> assessments) {
+    public Member(Long person_id, float startWeight, String chosenPackage) {
         this.person_id = person_id;
         this.startWeight = startWeight;
         this.chosenPackage = chosenPackage;
-        Assessments = assessments;
     }
 
 
@@ -113,48 +110,4 @@ public class Member extends GymApp
     public static Member findByUsername(Long person_id) {
         return find("username", person_id).first();
     }
-
-    /**
-     * Get Assessment records
-     *
-     * @return Hashmap Assessments
-     */
-    public HashMap<String, Assessment> getAssessments() {
-        return Assessments;
-    }
-
-    /**
-     * Set Assessments record
-     *
-     * @param assessments Hashmap
-     */
-    public void setAssessments(HashMap<String, Assessment> assessments) {
-        Assessments = assessments;
-    }
-
-    /**
-     * Returns the latest assessment based on last entry (by calendar date).
-     * It uses a TreeMap to extract keys in ascending order
-     * Return null if no assessments.
-     *
-     * @return Assessment The most recent assessment
-     */
-    public Assessment latestAssessment() {
-        SortedSet<String> dates = new TreeSet<>(getAssessments().keySet());
-        if (getAssessments().isEmpty())
-            return null;
-        return getAssessments().get(dates.last());
-    }
-
-    /**
-     * Returns the assessments dates (as strings) sorted in date order.
-     * Return empty set if no assessments.
-     *
-     * @return SortedSet Sorted assessment dates.
-     */
-    public SortedSet sortedAssessmentDates() {
-        // return keys sorted in ascending order
-        return new TreeSet<>(getAssessments().keySet());
-    }
-
 }
