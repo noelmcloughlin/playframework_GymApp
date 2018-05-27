@@ -5,7 +5,6 @@ import play.Logger;
 import play.mvc.Controller;
 
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
 
 public class Dashboard extends Controller
@@ -30,7 +29,7 @@ public class Dashboard extends Controller
                         bmi = utils.calculateBMI(person, assessmentList.get(assessmentList.size()-1));
                     }
                     Logger.info("Rendering Dashboard bmi " + bmi);
-                    render("person/dashboard.html", person, bmi, assessmentList);
+                    render("person/dashboard.html", person, utils, assessmentList);
                     break;
 
                 case Trainer:

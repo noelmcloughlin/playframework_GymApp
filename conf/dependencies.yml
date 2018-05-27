@@ -1,9 +1,6 @@
 # Application dependencies
 
 require:
-    - play
-    - play -> secure
-    - play -> crud
-    - org.springframework.security
-    - org.springframework.security.crypto.bcrypt.BCrypt
-    - javax.persistence-api
+    - play 1.5.0
+    - org.postgresql -> postgresql 42.2.2:
+       force: true

@@ -17,7 +17,7 @@ public class GymUtility extends GymApp
     public static double calculateBMI(Person person, Assessment assessment)
     {
         // BMI is weight divided by the square of the height.
-        return (assessment.getWeight() / Math.pow(assessment.getHeight(), 2)) - 0.04f;
+        return (assessment.getWeight() / Math.pow(person.getHeight(), 2)) - 0.04f;
     }
 
 
