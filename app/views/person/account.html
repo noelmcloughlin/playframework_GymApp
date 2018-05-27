@@ -38,15 +38,20 @@
                 </div>
             </div>
 
-            <div class="two items">
-                <div>Gender: </div>
-                <select name="gender" class="ui dropdown" value="${person.gender}">
-                  <option value="Male">Male</option>
-                  <option value="Female">Female</option>
-                </select>
-            </div>
+            <div class="three fields">
+                <div class="field">
+                    <label>Gender</label>
+                    <div class="ui selection dropdown">
+                        <input placeholder="${person.gender}" name="gender">
+                        <div class="default text">${person.gender}</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="0">Female</div>
+                            <div class="item" data-value="1">Male</div>
+                        </div>
+                    </div>
+                </div>
 
-            <div class="two fields">
                 <div class="field">
                     <label>Date of Birth</label>
                     <input placeholder="Date of Birth" type="text" name="dob" value="${person.dob}">
@@ -65,8 +70,8 @@
             </div>
         </form>
         <script>
-            $('select.dropdown')
-                .dropdown()
+            $('.ui.dropdown')
+                    .dropdown();
 
             $('.ui.form')
                 .form({
@@ -134,7 +139,7 @@
                                     prompt: 'Please select your gender'
                                 }
                             ]
-                        },
+                        }
                     }
                 })
             ;

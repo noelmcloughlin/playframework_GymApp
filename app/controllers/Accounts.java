@@ -15,10 +15,10 @@ public class Accounts extends Controller
     }
 
     public static void register(String firstname, String lastname, String username, String password,
-                                String email, GymApp.Role role)
+                                String email, GymApp.Gender gender, float height, GymApp.Role role)
     {
         Logger.info("Registering new person " + username);
-        Person person = new Person(firstname, lastname, username, password, email, role);
+        Person person = new Person(firstname, lastname, username, password, email, gender, height, role);
         person.save();
         switch (person.getRole())
         {
@@ -32,6 +32,7 @@ public class Accounts extends Controller
                 trainer.save();
                 break;
         }
+        System.out.println("gender =" + gender);
         redirect("/login");
     }
 

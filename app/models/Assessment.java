@@ -12,7 +12,7 @@ import java.util.List;
  * Assessment class implementation (JPA entity too).
  */
 @Entity
-public class Assessment extends GymApp implements Comparable<Assessment>
+public class Assessment extends GymApp
 {
     public Long person_id;
     public Long trainer_id;
@@ -27,10 +27,10 @@ public class Assessment extends GymApp implements Comparable<Assessment>
 
     //----- helpers -----
 
-    @Override
-    public int compareTo(Assessment o) {
-        return getDated().compareTo(o.getDated());
-    }
+   // @Override
+   // public int compareTo(Assessment o) {
+   //     return getDated().compareTo(o.getDated());
+   // }
 
     @Override
     public java.lang.String toString()
