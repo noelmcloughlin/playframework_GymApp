@@ -20,10 +20,9 @@ public class Dashboard extends Controller
             switch (person.getRole())
             {
                 case Member:
-                    List<Assessment> assessmentList = member.getAssessmentList(person.id);
-                    //if (assessmentList.size() > 0)
-                    //    Collections.sort(assessmentList);
-                    render("person/dashboard.html", person, member, assessmentList);
+                    List<Assessment> assessmentlist = member.getAssessmentList(person.id);
+                    //Collections.sort(assessmentlist);
+                    render("person/dashboard.html", person, member, assessmentlist);
                     break;
 
                 case Trainer:
@@ -99,9 +98,8 @@ public class Dashboard extends Controller
         Logger.info("Rendering showMember " + id);
         Person person = Person.findById(id);
         Member member = Member.findByPersonId(person.id);
-        List<Assessment> assessmentList = member.getAssessmentList(person.id);
-        //if (assessmentList.size() > 0)
-        //    Collections.sort(assessmentList);
-        render("trainer/member.html", person, member, assessmentList);
+        List<Assessment> assessmentlist = member.getAssessmentList(person.id);
+        //Collections.sort(assessmentlist);
+        render("trainer/member.html", person, member, assessmentlist);
     }
 }

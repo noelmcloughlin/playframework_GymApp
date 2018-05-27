@@ -17,7 +17,7 @@
                 <p>${member.isIdealBodyWeight(person)}</p>
             </div>
             <div class="column">
-                <i class="huge red heartbeat icon"></i>${member.calculateBMI(person)}
+                <i class="huge red heartbeat icon">${member.calculateBMI(person).format(".2")}</i>
                 <p>BMI</p>
             </div>
             <div class="column">

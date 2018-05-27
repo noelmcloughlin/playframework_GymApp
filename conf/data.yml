@@ -137,8 +137,8 @@ Assessment(1):
 Assessment(2):
   person_id: 3
   trainer_id: 2
-  dated: 2018-05-25
-  updated: 2018-05-25
+  dated: 2009-05-25
+  updated: 2009-05-25
   weight: 100.2f
   chest: 2f
   thigh: 20.2f
@@ -150,8 +150,8 @@ Assessment(2):
 Assessment(3):
   person_id: 3
   trainer_id: 2
-  dated: 2018-05-25
-  updated: 2018-05-25
+  dated: 2017-04-25
+  updated: 2017-05-25
   weight: 100.3f
   chest: 3f
   thigh: 20.3f
@@ -163,8 +163,8 @@ Assessment(3):
 Assessment(4):
   person_id: 3
   trainer_id: 2
-  dated: 2018-05-25
-  updated: 2018-05-25
+  dated: 2015-05-25
+  updated: 2015-05-25
   weight: 100.4f
   chest: 4f
   thigh: 20.4f
@@ -176,8 +176,8 @@ Assessment(4):
 Assessment(5):
   person_id: 3
   trainer_id: 2
-  dated: 2018-05-25
-  updated: 2018-05-25
+  dated: 2006-05-25
+  updated: 2006-05-25
   weight: 100.5f
   chest: 5f
   thigh: 20.5f
@@ -189,8 +189,8 @@ Assessment(5):
 Assessment(6):
   person_id: 3
   trainer_id: 2
-  dated: 2018-05-25
-  updated: 2018-05-25
+  dated: 2001-05-25
+  updated: 2001-05-25
   weight: 100.6f
   chest: 6f
   thigh: 20.6f
@@ -202,8 +202,8 @@ Assessment(6):
 Assessment(7):
   person_id: 3
   trainer_id: 2
-  dated: 2018-05-25
-  updated: 2018-05-25
+  dated: 2011-05-25
+  updated: 2011-05-25
   weight: 100.7f
   chest: 7f
   thigh: 20.7f
@@ -215,8 +215,8 @@ Assessment(7):
 Assessment(8):
   person_id: 3
   trainer_id: 2
-  dated: 2018-05-25
-  updated: 2018-05-25
+  dated: 2014-05-25
+  updated: 2014-05-25
   weight: 100.8f
   chest: 8f
   thigh: 20.8f
@@ -228,8 +228,8 @@ Assessment(8):
 Assessment(9):
   person_id: 3
   trainer_id: 2
-  dated: 2018-05-25
-  updated: 2018-05-25
+  dated: 2008-05-25
+  updated: 2008-05-25
   weight: 100.9f
   chest: 9f
   thigh: 20.9f
