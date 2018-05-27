@@ -4,7 +4,6 @@
 package models;
 
 import javax.persistence.*;
-import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -12,25 +11,25 @@ import java.util.List;
  * Assessment class implementation (JPA entity too).
  */
 @Entity
-public class Assessment extends GymApp //implements Comparable<Assessment>
+public class Assessment extends GymApp implements Comparable<Assessment>
 {
-    private Long person_id;
-    private Long trainer_id;
-    private float weight;
-    private float height;
-    private float chest;
-    private float thigh;
-    private float arm;
-    private float waist;
-    private float hips;
-    private String comment;
+    public Long person_id;
+    public Long trainer_id;     // for future use
+    public float weight;
+    public float height;        // for future use
+    public float chest;
+    public float thigh;
+    public float arm;
+    public float waist;
+    public float hips;
+    public String comment;
 
     //----- helpers -----
 
-    //@Override
-    //public int compareTo(Assessment another_assessment) {
-    //    return getDated().compareTo(another_assessment.getDated());
-    //}
+    @Override
+    public int compareTo(Assessment another_assessment) {
+        return getDated().compareTo(another_assessment.getDated());
+    }
 
     @Override
     public java.lang.String toString()

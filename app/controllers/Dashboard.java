@@ -21,7 +21,7 @@ public class Dashboard extends Controller
             {
                 case Member:
                     List<Assessment> assessmentlist = member.getAssessmentList(person.id);
-                    //Collections.sort(assessmentlist);
+                    Collections.sort(assessmentlist);
                     render("person/dashboard.html", person, member, assessmentlist);
                     break;
 
@@ -99,7 +99,7 @@ public class Dashboard extends Controller
         Person person = Person.findById(id);
         Member member = Member.findByPersonId(person.id);
         List<Assessment> assessmentlist = member.getAssessmentList(person.id);
-        //Collections.sort(assessmentlist);
+        Collections.sort(assessmentlist);
         render("trainer/member.html", person, member, assessmentlist);
     }
 }

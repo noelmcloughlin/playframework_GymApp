@@ -127,6 +127,7 @@ Assessment(1):
   dated: 2018-05-25
   updated: 2018-05-25
   weight: 100.1f
+  height: 0.0f
   chest: 1f
   thigh: 20.1f
   arm: 15.1f
@@ -140,6 +141,7 @@ Assessment(2):
   dated: 2009-05-25
   updated: 2009-05-25
   weight: 100.2f
+  height: 0.0f
   chest: 2f
   thigh: 20.2f
   arm: 15.2f
@@ -153,6 +155,7 @@ Assessment(3):
   dated: 2017-04-25
   updated: 2017-05-25
   weight: 100.3f
+  height: 0.0f
   chest: 3f
   thigh: 20.3f
   arm: 15.3f
@@ -166,6 +169,7 @@ Assessment(4):
   dated: 2015-05-25
   updated: 2015-05-25
   weight: 100.4f
+  height: 0.0f
   chest: 4f
   thigh: 20.4f
   arm: 15.4f
@@ -179,6 +183,7 @@ Assessment(5):
   dated: 2006-05-25
   updated: 2006-05-25
   weight: 100.5f
+  height: 0.0f
   chest: 5f
   thigh: 20.5f
   arm: 15.5f
@@ -192,6 +197,7 @@ Assessment(6):
   dated: 2001-05-25
   updated: 2001-05-25
   weight: 100.6f
+  height: 0.0f
   chest: 6f
   thigh: 20.6f
   arm: 15.6f
@@ -205,6 +211,7 @@ Assessment(7):
   dated: 2011-05-25
   updated: 2011-05-25
   weight: 100.7f
+  height: 0.0f
   chest: 7f
   thigh: 20.7f
   arm: 15.7f
@@ -218,6 +225,7 @@ Assessment(8):
   dated: 2014-05-25
   updated: 2014-05-25
   weight: 100.8f
+  height: 0.0f
   chest: 8f
   thigh: 20.8f
   arm: 15.8f
@@ -231,6 +239,7 @@ Assessment(9):
   dated: 2008-05-25
   updated: 2008-05-25
   weight: 100.9f
+  height: 0.0f
   chest: 9f
   thigh: 20.9f
   arm: 15.9f
