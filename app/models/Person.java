@@ -5,12 +5,10 @@ package models;
  **/
 
 import org.springframework.security.crypto.bcrypt.BCrypt;
-
 import javax.persistence.*;
 import java.util.*;
 
 import static models.GymApp.Gender.Female;
-import static models.GymApp.Gender.Male;
 
 @Entity
 public class Person extends GymApp
@@ -78,7 +76,7 @@ public class Person extends GymApp
     }
 
     /**
-     * list all people with Role 'role'.
+     * list all people with 'role'.
      * @param role Role
      * @return List<> List of people with role
      */
@@ -86,7 +84,6 @@ public class Person extends GymApp
     {
         return find("role", role).fetch();
     }
-
 
 
 

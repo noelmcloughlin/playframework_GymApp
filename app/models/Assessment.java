@@ -1,7 +1,6 @@
 /**
  * Assessment class implements member assessment properties and methods. Extends Domain model class.
  **/
-
 package models;
 
 import javax.persistence.*;
@@ -12,12 +11,12 @@ import java.util.List;
  * Assessment class implementation (JPA entity too).
  */
 @Entity
-public class Assessment extends GymApp
+public class Assessment extends GymApp implements Comparable<Assessment>
 {
     public Long person_id;
-    public Long trainer_id;
+    public Long trainer_id;     // for future use
     public float weight;
-    public float height;
+    public float height;        // for future use
     public float chest;
     public float thigh;
     public float arm;
@@ -27,10 +26,10 @@ public class Assessment extends GymApp
 
     //----- helpers -----
 
-   // @Override
-   // public int compareTo(Assessment o) {
-   //     return getDated().compareTo(o.getDated());
-   // }
+    @Override
+    public int compareTo(Assessment another_assessment) {
+        return getDated().compareTo(another_assessment.getDated());
+    }
 
     @Override
     public java.lang.String toString()
@@ -48,6 +47,11 @@ public class Assessment extends GymApp
                 ", 'comment': '" + comment + "'}" + super.toString();
     }
 
+    /**
+     * List assessments by person id
+     * @param person_id
+     * @return List of assessments
+     */
     public static List<Assessment> listAssessments(Long person_id) {
         return find("person_id", person_id).fetch();
     }
@@ -74,7 +78,8 @@ public class Assessment extends GymApp
      * @param hips    Assessed hips in inches.
      * @param comment Assessment commentary.
      */
-    public Assessment(Long person_id, Long trainer_id, float weight, float chest, float thigh, float arm, float waist, float hips, String comment)
+    public Assessment(Long person_id, Long trainer_id, float weight, float chest, float thigh, float arm,
+                      float waist, float hips, String comment)
     {
         this.person_id = person_id;
         this.trainer_id = trainer_id;

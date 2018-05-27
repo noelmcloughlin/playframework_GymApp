@@ -17,7 +17,7 @@
                 <p>${member.isIdealBodyWeight(person)}</p>
             </div>
             <div class="column">
-                <i class="huge red heartbeat icon"></i>${member.calculateBMI(person)}
+                <i class="huge red heartbeat icon">${member.calculateBMI(person).format(".2")}</i>
                 <p>BMI</p>
             </div>
             <div class="column">
@@ -60,7 +60,7 @@
                 <td> ${assessment.arm}</td>
                 <td> ${assessment.waist}</td>
                 <td> ${assessment.hips}</td>
-                <td> ssss </td>
+                <td> future todo </td>
                 <td> ${assessment.comment}</td>
                 <td><a href="/dashboard/deleteAssessment/${assessment.id}"><i class="medium red trash icon"></i> </a></td>
             </tr>

@@ -1,5 +1,4 @@
 package models;
-
 import javax.persistence.Entity;
 import java.util.Date;
 
@@ -29,7 +28,7 @@ public class Trainer extends GymApp
     }
 
 
-    //-------- Constructors -------//
+    //-------- Constructors -------
 
     public Trainer(Long person_id, String speciality) {
         this.person_id = person_id;
@@ -38,7 +37,7 @@ public class Trainer extends GymApp
     }
 
 
-    //-------- Getter's and Setter's -------//
+    //-------- Getter's and Setter's ------
 
     /**
      * Get the trainers speciality
