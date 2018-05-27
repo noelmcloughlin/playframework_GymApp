@@ -21,7 +21,7 @@ public class Dashboard extends Controller
             {
                 case Member:
                     List<Assessment> assessmentlist = member.getAssessmentList(person.id);
-                    Collections.sort(assessmentlist);
+                    Collections.sort(assessmentlist, Collections.reverseOrder());
                     render("person/dashboard.html", person, member, assessmentlist);
                     break;
 
@@ -63,6 +63,10 @@ public class Dashboard extends Controller
 
     //--- delete methods
 
+    /**
+     * Delete gym assessment route
+     * @param id
+     */
     public static void deleteAssessment(Long id) {
         Assessment assessment = Assessment.findById(id);
         assessment.delete();
@@ -70,6 +74,10 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
+    /**
+     * Delete member route
+     * @param id
+     */
     public static void deleteMember(Long id)
     {
         Person person = Person.findById(id);
@@ -93,13 +101,17 @@ public class Dashboard extends Controller
         redirect("/dashboard");
     }
 
+    /**
+     * Show member details (Trainer view)
+     * @param id
+     */
     public static void showMember(Long id)
     {
         Logger.info("Rendering showMember " + id);
         Person person = Person.findById(id);
         Member member = Member.findByPersonId(person.id);
         List<Assessment> assessmentlist = member.getAssessmentList(person.id);
-        Collections.sort(assessmentlist);
+        Collections.sort(assessmentlist, Collections.reverseOrder());
         render("trainer/member.html", person, member, assessmentlist);
     }
 }

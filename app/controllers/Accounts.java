@@ -6,14 +6,31 @@ import play.mvc.Controller;
 
 public class Accounts extends Controller
 {
+    /**
+     * Signup route
+     */
     public static void signup() {
         render("person/signup.html");
     }
 
+    /**
+     * Login route
+     */
     public static void login() {
         render("person/login.html");
     }
 
+    /**
+     *  Registration  route
+     * @param firstname
+     * @param lastname
+     * @param username
+     * @param password
+     * @param email
+     * @param gender
+     * @param height
+     * @param role
+     */
     public static void register(String firstname, String lastname, String username, String password,
                                 String email, GymApp.Gender gender, float height, GymApp.Role role)
     {
@@ -36,11 +53,25 @@ public class Accounts extends Controller
         redirect("/login");
     }
 
+    /**
+     * ShowMe route (show my profile).
+     */
     public static void showMe() {
         Person person = getLoggedInPerson();
         render("person/account.html", person);
     }
 
+    /**
+     * EditMe route (edit my profile)
+     * @param firstname
+     * @param lastname
+     * @param email
+     * @param username
+     * @param password
+     * @param gender
+     * @param dob
+     * @param address
+     */
     public static void editMe(String firstname, String lastname, String email, String username, String password,
                               GymApp.Gender gender, String dob, String address)
     {
@@ -60,6 +91,11 @@ public class Accounts extends Controller
         redirect("/dashboard");
     }
 
+    /**
+     * Authentication route
+     * @param username
+     * @param password
+     */
     public static void authenticate(String username, String password)
     {
         Logger.info("Authenticating " + username);
@@ -75,11 +111,18 @@ public class Accounts extends Controller
         }
     }
 
+    /**
+     * Logout route (clean user session)
+     */
     public static void logout() {
         session.clear();
         redirect("/");
     }
 
+    /**
+     * Get logged in person route
+     * @return
+     */
     public static Person getLoggedInPerson()
     {
         Person person = null;
