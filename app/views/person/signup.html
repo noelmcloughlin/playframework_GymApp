@@ -23,7 +23,7 @@
             <p>Fill out the form below to sign-up for a new account</p>
         </div>
 
-        <form class="ui fluid stacked segment form" action="/register" method="POST">
+        <form class="ui form segment" action="/register" method="POST">
             <h3 class="ui header">Register</h3>
 
             <div class="two fields">
@@ -47,16 +47,31 @@
                     <input type="password" name="password">
                 </div>
             </div>
-            <div class="two fields">
+            <div class="three fields">
                 <div class="field">
                     <label>Email</label>
                     <input placeholder="name@domain" type="text" name="email">
                 </div>
                 <div class="field">
                     <label>Height</label>
-                    <input placeholder="0.0m" type="text" name="height">
+                    <input placeholder="0.0 m" type="text" name="height">
+                </div>
+                <div class="field">
+                    <label>Gender</label>
+                    <div class="ui selection dropdown">
+                        <input name="gender" type="hidden">
+                        <div class="default text">Gender</div>
+                        <i class="dropdown icon"></i>
+                        <div class="menu">
+                            <div class="item" data-value="1">Male</div>
+                            <div class="item" data-value="0">Female</div>
+                        </div>
+                    </div>
                 </div>
             </div>
+            <br>
+            <br>
+
             <div class="inline field">
                 <div class="ui checkbox">
                     <input type="checkbox" id="terms">
@@ -71,6 +86,9 @@
             </div>
         </form>
         <script>
+            $('.ui.dropdown')
+                    .dropdown();
+
             $('.ui.form')
                 .form({
                     fields: {
@@ -131,7 +149,16 @@
                                     prompt: 'You must agree to the terms and conditions'
                                 }
                             ]
-                        }
+                        },
+                        gender: {
+                            identifier: 'gender',
+                            rules: [
+                                {
+                                    type: 'empty',
+                                    prompt: 'Please select your gender'
+                                }
+                            ]
+                        },
                     }
                 })
             ;

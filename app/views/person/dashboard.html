@@ -13,15 +13,15 @@
             </div>
             <div class="column">
                 <i class="huge brown compass icon"></i>
-                <p>IDEAL WEIGHT INDICATOR</p>
+                 <p>${member.isIdealBodyWeight(person)}</p>
             </div>
             <div class="column">
-                <i class="huge red heartbeat icon">${bmi}</i>
+                <i class="huge red heartbeat icon"></i>${member.calculateBMI(person)}
                 <p>BMI</p>
             </div>
             <div class="column">
                 <i class="huge white user md icon"></i>
-                <p>utils.determineBMICategory()</p>
+                <p>${member.determineBMICategory(member.calculateBMI(person))}</p>
             </div>
         </div>
     </section>
@@ -96,7 +96,7 @@
             <td> ${assessment.arm}</td>
             <td> ${assessment.waist}</td>
             <td> ${assessment.hips}</td>
-            <td> ssss </td>
+            <td> tbc </td>
             <td> ${assessment.comment}</td>
             <td><a href="/dashboard/deleteAssessment/${assessment.id}"><i class="red trash icon"></i></a></td>
         </tr>

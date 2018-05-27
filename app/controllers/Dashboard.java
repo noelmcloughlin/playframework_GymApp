@@ -9,27 +9,21 @@ import java.util.List;
 
 public class Dashboard extends Controller
 {
-    public static GymUtility utils = new GymUtility();
-
     public static void dashboard()
     {
-        double bmi = 0;
-
         Logger.info("Rendering Dashboard");
         Person person = Accounts.getLoggedInPerson();
+        Member member = Member.findByPersonId(person.id);
         if (person == null)
             redirect("/login");
         else
             switch (person.getRole())
             {
                 case Member:
-                    List<Assessment> assessmentList = person.getAssessmentList(person.id);
-                    if (assessmentList.size() > 0) {
-                        Collections.sort(assessmentList);
-                        bmi = utils.calculateBMI(person, assessmentList.get(assessmentList.size()-1));
-                    }
-                    Logger.info("Rendering Dashboard bmi " + bmi);
-                    render("person/dashboard.html", person, utils, assessmentList);
+                    List<Assessment> assessmentList = member.getAssessmentList(person.id);
+                    //if (assessmentList.size() > 0)
+                    //    Collections.sort(assessmentList);
+                    render("person/dashboard.html", person, member, assessmentList);
                     break;
 
                 case Trainer:
@@ -102,15 +96,12 @@ public class Dashboard extends Controller
 
     public static void showMember(Long id)
     {
-        double bmi = 0;
-
         Logger.info("Rendering showMember " + id);
         Person person = Person.findById(id);
-        List<Assessment> assessmentList = person.getAssessmentList(person.id);
-        if (assessmentList.size() > 0) {
-            Collections.sort(assessmentList);
-            bmi = utils.calculateBMI(person, assessmentList.get(assessmentList.size()-1));
-        }
-        render("trainer/member.html", person, utils, assessmentList);
+        Member member = Member.findByPersonId(person.id);
+        List<Assessment> assessmentList = member.getAssessmentList(person.id);
+        //if (assessmentList.size() > 0)
+        //    Collections.sort(assessmentList);
+        render("trainer/member.html", person, member, assessmentList);
     }
 }
