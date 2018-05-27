@@ -213,6 +213,4 @@ public class Member extends GymApp
         //Collections.sort( assessmentList );
         return assessmentList.get(assessmentList.size()-1);
     }
-
-
 }

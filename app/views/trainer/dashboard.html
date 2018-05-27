@@ -18,23 +18,39 @@
 
     <section class="ui raised segment">
         <header class="ui header">Gym members</header>
-    </section>
-    <section class="ui fourteen wide column center aligned bordered doubling stackable grid">
-        #{list items:memberlist, as:'member'}
-            <div class="row">
-                <div class="two wide column">
-                    <td><a href="/dashboard/showMember/${member.id} " class="ui tiny green button"> View </a>
-                </div>
-                <div class="four wide column">
-                    <td><h3 class="ui header">${member.firstname + " " + member.lastname}</h3></td>
-                </div>
-                <div class="six wide column">
-                    <td>${member.dated}</td>
-                </div>
-                <div class="two wide column">
-                    <td><a href="/dashboard/deleteMember/${member.id} " class="ui tiny red button"> Delete </a>
-                </div>
-            </div>
-        #{/list}
+        <table class="ui celled table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Date joined</th>
+                    <th>Number of Assessments</th>
+                    <th>View Member Details</th>
+                    <th>Delete this member</th>
+                </tr>
+            </thead>
+            <tbody>
+                #{list items:memberlist, as:'member'}
+                <tr>
+                    <div class="row">
+                        <div class="four wide column">
+                            <td><h3 class="ui header">${member.firstname + " " + member.lastname}</h3></td>
+                        </div>
+                        <div class="four wide column">
+                            <td>${member.dated}</td>
+                        </div>
+                        <div class="four wide column">
+                            <td>${member.getAssessmentList(member.id).size()}</td>
+                        </div>
+                        <div class="two wide column">
+                            <td><a href="/dashboard/showMember/${member.id} " class="ui medium green button"> VIEW </a>
+                        </div>
+                        <div class="two wide column">
+                            <td><a href="/dashboard/deleteMember/${member.id} " class="ui tiny red button"> Delete </a>
+                        </div>
+                    </div>
+                </tr>
+                #{/list}
+            </tbody>
+        </table>
     </section>
 </section>
