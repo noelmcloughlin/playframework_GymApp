@@ -210,7 +210,7 @@ public class Member extends GymApp
         if (assessmentList == null || assessmentList.size() == 0)
             return null;
 
-//        Collections.sort( assessmentList );
+        //Collections.sort( assessmentList );
         return assessmentList.get(assessmentList.size()-1);
     }
 

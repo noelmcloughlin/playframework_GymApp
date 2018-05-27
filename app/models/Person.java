@@ -9,6 +9,8 @@ import javax.persistence.*;
 import java.util.*;
 import static models.GymApp.Gender.*;
 
+import static models.GymApp.Gender.Female;
+
 @Entity
 public class Person extends GymApp
 {
