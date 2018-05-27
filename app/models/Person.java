@@ -333,4 +333,15 @@ public class Person extends GymApp
         else
             this.email = email;
     }
+
+    /**
+     * Get assessments for member by person_id
+     * @param person_id person id
+     * @return List of assessments
+     */
+    public List<Assessment> getAssessmentList(Long person_id)
+    {
+        return Assessment.listAssessments(person_id);
+    }
+
 }
